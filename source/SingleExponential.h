@@ -9,6 +9,7 @@ class SingleExponential
       SingleExponential();
 
       static double computeFirstPreParameter(const QVector<double> & X, const QVector<double> & Y);
+      static double computeSecondPreParameter(const QVector<double> & X, const QVector<double> & Y);
 
 };
 
