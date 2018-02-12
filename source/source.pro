@@ -24,12 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     ChemFit.cpp \
-    SingleExponential.cpp
+    SingleExponential.cpp \
+    mathOps.cpp
 
 HEADERS += \
     ChemFit.h \
     SingleExponential.h \
-    ChemFit_global.h
+    ChemFit_global.h \
+    mathOps.h
 
 unix {
     target.path = /usr/lib
