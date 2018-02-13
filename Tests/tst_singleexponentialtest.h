@@ -12,6 +12,7 @@ class SingleExponentialTest : public TestSuite
    private slots:
       void testcomputeFirstPreParameter();
       void testcomputeSecondPreParameter();
+      void testComputeParameters();
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H
