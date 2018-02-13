@@ -22,16 +22,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+unix:LIBS += $$system(python$${PYTHON_VERSION}-config --libs)
+unix:QMAKE_CXXFLAGS += $$system(python$${PYTHON_VERSION}-config --includes) -D_hypot=hypot
+win32:LIBS += C:/Python27/libs/python27.lib -lqwt
+
 SOURCES += \
     ChemFit.cpp \
     SingleExponential.cpp \
-    mathOps.cpp
+    mathOps.cpp \
+    PythonInterface.cpp
 
 HEADERS += \
     ChemFit.h \
     SingleExponential.h \
     ChemFit_global.h \
-    mathOps.h
+    mathOps.h \
+    PythonInterface.h
 
 unix {
     target.path = /usr/lib
