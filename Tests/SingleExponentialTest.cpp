@@ -10,7 +10,7 @@ SingleExponentialTest::SingleExponentialTest()
 
 }
 
-void SingleExponentialTest::testcomputeFirstPreParameter()
+void SingleExponentialTest::testComputeFirstPreParameter()
 {
    const double mock = -0.20228711901914495;
    QVector<double> X = {1, 2, 3, 4, 5};
@@ -19,7 +19,7 @@ void SingleExponentialTest::testcomputeFirstPreParameter()
    QVERIFY2(qFuzzyCompare(P1, mock), "Parameter calculation failed!");
 }
 
-void SingleExponentialTest::testcomputeSecondPreParameter()
+void SingleExponentialTest::testComputeSecondPreParameter()
 {
    const double mock = 0.5241747015059647;
    QVector<double> X = {1, 2, 3, 4, 5};

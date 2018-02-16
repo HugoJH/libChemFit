@@ -10,8 +10,8 @@ class SingleExponentialTest : public TestSuite
       SingleExponentialTest();
       using TestSuite::TestSuite;
    private slots:
-      void testcomputeFirstPreParameter();
-      void testcomputeSecondPreParameter();
+      void testComputeFirstPreParameter();
+      void testComputeSecondPreParameter();
       void testComputeParameters();
 };
 
