@@ -2,6 +2,7 @@
 #define PYTHONINTERFACE_H
 
 #include <QString>
+#undef slots
 #include <Python.h>
 #include <QVariantList>
 
@@ -11,12 +12,13 @@ class PythonInterface
       PythonInterface();
       ~PythonInterface();
 
+      QVariant callFunction(const QString& moduleName,
+                            const QString& functionName,
+                            const QVariantList& arguments);
+   private:
       PyObject* importModule(const QString & moduleName);
       PyObject* loadArguments(const QVariantList& args);
       PyObject* prepareFunction(PyObject* module, const QString& function);
-      QVariant callFunction(const QString& moduleName,
-                                const QString& functionName,
-                                const QVariantList& arguments);
       QVariant prepareOutput(PyObject* pyOutput);
 };
 

@@ -1,5 +1,5 @@
 #include "PythonInterface.h"
-#include <Python.h>
+
 #include <QVariantList>
 #include <iostream>
 #include <QDebug>
