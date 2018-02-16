@@ -10,6 +10,7 @@ class DoubleExponentialTest : public TestSuite
       DoubleExponentialTest();
       using TestSuite::TestSuite;
    private slots:
+      void testComputePreParameters();
 
 };
 
