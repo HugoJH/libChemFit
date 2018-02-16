@@ -28,16 +28,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 LIBS +=  "$$shadowed($$PWD)/../source/libchemFit.so.1.0.0" -L"$$shadowed($$PWD)/../source/"
 
 SOURCES += \
-        tst_singleexponentialtest.cpp \
         main.cpp \
         suite.cpp \
-    DoubleExponentialTest.cpp
+    DoubleExponentialTest.cpp \
+    SingleExponentialTest.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 INCLUDEPATH += $$PWD/../source
 DEPENDPATH += $$PWD/../source
 
 HEADERS += \
-    tst_singleexponentialtest.h \
     suite.h \
-    DoubleExponentialTest.h
+    DoubleExponentialTest.h \
+    SingleExponentialTest.h

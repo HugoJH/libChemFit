@@ -1,4 +1,4 @@
-#include "tst_singleexponentialtest.h"
+#include "SingleExponentialTest.h"
 
 #include <QString>
 #include <QtTest/QtTest>
