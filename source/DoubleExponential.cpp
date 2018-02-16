@@ -13,7 +13,9 @@ QVector<double> DoubleExponential::computePreParameters(const QVector<double>& X
 
 }
 
-QVector<double> DoubleExponential::computeFirstPreParameter(const QVector<double>& X, const QVector<double>& Y)
+
+double DoubleExponential::computeFirstPreParameter(const QVector<double>& X,
+                                                   const QVector<double>& Y)
 {
 
 }
