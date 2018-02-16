@@ -16,7 +16,6 @@ void SingleExponentialTest::testcomputeFirstPreParameter()
    QVector<double> X = {1, 2, 3, 4, 5};
    QVector<double> Y = {1, 3, 5, 7, 9};
    double P1 = SingleExponential::computeFirstPreParameter(X, Y);
-   qDebug() << "Computation of single exponential first pre-parameter" << P1;
    QVERIFY2(qFuzzyCompare(P1, mock), "Parameter calculation failed!");
 }
 
@@ -26,7 +25,6 @@ void SingleExponentialTest::testcomputeSecondPreParameter()
    QVector<double> X = {1, 2, 3, 4, 5};
    QVector<double> Y = {1, 3, 5, 7, 9};
    double P2 = SingleExponential::computeSecondPreParameter(X, Y);
-   qDebug() << "Computation of single exponential second pre-parameter" << P2;
    QVERIFY2(qFuzzyCompare(P2, mock), "Pre-Parameter calculation failed!");
 }
 
