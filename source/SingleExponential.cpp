@@ -1,8 +1,9 @@
 #include "SingleExponential.h"
 
 #include "mathOps.h"
+#include "PythonInterface.h"
 #include <QtMath>
-
+#include <utility>
 
 SingleExponential::SingleExponential()
 {
@@ -38,4 +39,35 @@ double SingleExponential::computeSecondPreParameter(const QVector<double>& X, co
            (qPow(mathOps::sum(X), 2));
 
    return num / denom;
+}
+
+std::pair<double,double> SingleExponential::computeParameters(const QVector<double> &X,
+                                                              const QVector<double> &Y,
+                                                              double pre1,
+                                                              double pre2)
+{
+   QVariantList arguments;
+
+   arguments.push_back(prepareDataVector(X));
+   arguments.push_back(prepareDataVector(Y));
+   arguments.push_back(pre1);
+   arguments.push_back(pre2);
+
+   QString moduleName = "fit";
+   QString functionName = "LMPARAMS";
+   PythonInterface pyInterface;
+   QVariant output = pyInterface.callFunction(moduleName, functionName, arguments);
+   std::pair<double,double> salida(output.toList()[0].toDouble(),
+                                   output.toList()[1].toDouble());
+   return salida;
+}
+
+QVariantList SingleExponential::prepareDataVector(const QVector<double>& X)
+{
+   QVariantList list;
+   foreach( const double &item, X)
+   {
+      list << item;
+   }
+   return list;
 }
