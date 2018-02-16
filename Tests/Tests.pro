@@ -30,7 +30,8 @@ LIBS +=  "$$shadowed($$PWD)/../source/libchemFit.so.1.0.0" -L"$$shadowed($$PWD)/
 SOURCES += \
         tst_singleexponentialtest.cpp \
         main.cpp \
-        suite.cpp
+        suite.cpp \
+    DoubleExponentialTest.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 INCLUDEPATH += $$PWD/../source
@@ -38,4 +39,5 @@ DEPENDPATH += $$PWD/../source
 
 HEADERS += \
     tst_singleexponentialtest.h \
-    suite.h
+    suite.h \
+    DoubleExponentialTest.h
