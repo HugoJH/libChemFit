@@ -30,14 +30,16 @@ SOURCES += \
     ChemFit.cpp \
     SingleExponential.cpp \
     mathOps.cpp \
-    PythonInterface.cpp
+    PythonInterface.cpp \
+    DoubleExponential.cpp
 
 HEADERS += \
     ChemFit.h \
     SingleExponential.h \
     ChemFit_global.h \
     mathOps.h \
-    PythonInterface.h
+    PythonInterface.h \
+    DoubleExponential.h
 
 unix {
     target.path = /usr/lib
