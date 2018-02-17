@@ -12,5 +12,12 @@ class mathOps
       static double mean(const QVector<double>& X);
       static double sum(const QVector<double>& X);
 };
+QVector<double> operator+(const QVector<double> & X, const QVector<double> & Y);
+
+QVector<double> operator+(const QVector<double> & X, double n);
+
+QVector<double> operator+(double n, const QVector<double> & X);
+
+QVector<double> operator*(const QVector<double> & X, const QVector<double> & Y);
 
 #endif // MATHOPS_H
