@@ -32,7 +32,7 @@ void DoubleExponentialTest::testComputeSecondPreParameter()
 {
    QVector<double> X = {1, 2, 3, 4, 5, 6, 7, 8, 9};
    QVector<double> Y = {1, 3, 5, 7, 9, 11, 13, 15, 17};
-   double mockParameter = 0.5;
+   double mockParameter = 0.2255319500077855;
    double parameter = DoubleExponential::computeSecondPreParameter(X, Y);
    QVERIFY2(qFuzzyCompare(parameter, mockParameter), "Second Pre-Parameter calculation failed!");
 }

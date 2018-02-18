@@ -33,3 +33,20 @@ double DoubleExponential::computeFirstPreParameter(const QVector<double>& X,
 
    return num / denom;
 }
+
+double DoubleExponential::computeSecondPreParameter(const QVector<double>& X, const QVector<double>& Y)
+{
+   double num;
+   double denom;
+
+   num = (mathOps::sum(Y) *
+          mathOps::sum(Y * X * mathOps::vLn(Y))) -
+           (mathOps::sum(X * Y) *
+            mathOps::sum(Y * mathOps::vLn(Y)));
+
+   denom = (mathOps::sum(Y) *
+            mathOps::sum(mathOps::vPow(X, 2) * Y)) -
+           qPow(mathOps::sum(X * Y), 2);
+
+   return num / denom;
+}

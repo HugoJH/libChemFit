@@ -10,7 +10,9 @@ class DoubleExponential
       static QVector<double> computePreParameters(const QVector<double>& X,
                                                   const QVector<double>& Y);
       static double computeFirstPreParameter(const QVector<double>& X,
-                                                      const QVector<double>& Y);
+                                             const QVector<double>& Y);
+      static double computeSecondPreParameter(const QVector<double>& X,
+                                             const QVector<double>& Y);
 };
 
 #endif // DOUBLEEXPONENTIAL_H
