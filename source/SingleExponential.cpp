@@ -53,7 +53,7 @@ std::pair<double,double> SingleExponential::computeParameters(const QVector<doub
    arguments.push_back(pre1);
    arguments.push_back(pre2);
 
-   QString moduleName = "fit";
+   QString moduleName = "fit1comp";
    QString functionName = "LMPARAMS";
    PythonInterface pyInterface;
    QVariant output = pyInterface.callFunction(moduleName, functionName, arguments);
