@@ -62,6 +62,16 @@ std::pair<double,double> SingleExponential::computeParameters(const QVector<doub
    return salida;
 }
 
+QVector<double> SingleExponential::computeExponential(const QVector<double>& X, double P1, double P2)
+{
+   QVector <double> vector;
+   for (int i = 0; i < X.size(); ++i)
+   {
+       vector.push_back(P1 * exp(-P2 * X[i]));
+   }
+   return vector;
+}
+
 QVariantList SingleExponential::prepareDataVector(const QVector<double>& X)
 {
    QVariantList list;
