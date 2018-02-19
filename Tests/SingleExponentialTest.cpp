@@ -41,4 +41,14 @@ void SingleExponentialTest::testComputeParameters()
    QVERIFY2(qFuzzyCompare(parameters.second, mockP2), "Second Parameter calculation failed!");
 }
 
+void SingleExponentialTest::testComputeSingleExponential()
+{
+   QVector<double> X = {1, 2, 3, 4, 5};
+   QVector<double> mockY = {1, 3, 5, 7, 9};
+   const double mockP1 = 1.4078409462923063;
+   const double mockP2 = -0.3802344472200062;
+   QVector<double> EstY = SingleExponential::computeExponential(X, mockP1, mockP2);
+   QVERIFY2(EstY == mockY, "Single exponential computation failed");
+}
+
 static SingleExponentialTest SETest;

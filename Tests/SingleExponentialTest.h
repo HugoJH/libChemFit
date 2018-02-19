@@ -13,6 +13,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeFirstPreParameter();
       void testComputeSecondPreParameter();
       void testComputeParameters();
+      void testComputeSingleExponential();
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H
