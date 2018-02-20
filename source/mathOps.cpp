@@ -47,27 +47,50 @@ double mathOps::sum(const QVector<double>& X)
    }
    return result;
 }
+double mathOps::var(const QVector<double> &X)
+{
+    double result  = 0;
+    double mean_x = mean(X);
+    for(int i = 0; i < X.count(); ++i)
+    {
+        result  += qPow((X[i] - mean_x), 2);
+    }
+
+    return result / (X.count() - 1);
+}
+
+
+double mathOps::stdDev(const QVector<double> &X)
+{
+    return sqrt(var(X));
+}
+double mathOps::stdResidualsSum(const QVector<double>& sumOfComponents, const QVector<double>& Y)
+{
+   QVector<double> diffTC = mathOps::vPow(Y - sumOfComponents, 2);
+   double stddiff = mathOps::stdDev(diffTC);
+   return mathOps::sum(diffTC / stddiff);
+}
 
 QVector<double> operator+(const QVector<double>& X, const QVector<double>& Y)
 {
-   QVector<double> temp;
+   QVector<double> result;
 
    for (int i = 0; i < X.count(); ++i)
    {
-      temp << Y[i] + X[i];
+      result << X[i] + Y[i];
    }
-   return temp;
+   return result;
 }
 
 QVector<double> operator+(const QVector<double>& X, double n)
 {
-   QVector<double> temp;
+   QVector<double> result;
 
    for (int i = 0; i < X.count(); ++i)
    {
-      temp << X[i] + n;
+      result << X[i] + n;
    }
-   return temp;
+   return result;
 }
 
 QVector<double> operator+(double n, const QVector<double>& X)
@@ -77,11 +100,33 @@ QVector<double> operator+(double n, const QVector<double>& X)
 
 QVector<double> operator*(const QVector<double>& X, const QVector<double>& Y)
 {
-   QVector<double> temp;
+   QVector<double> result;
 
    for (int i = 0; i < X.count(); ++i)
    {
-      temp << X[i] * Y[i];
+      result << X[i] * Y[i];
    }
-   return temp;
+   return result;
+}
+
+QVector<double> operator-(const QVector<double>& X, const QVector<double>& Y)
+{
+   QVector<double> result;
+
+   for (int i = 0; i < X.count(); ++i)
+   {
+      result << X[i] - Y[i];
+   }
+   return result;
+}
+
+QVector<double> operator/(const QVector<double>& X, double n)
+{
+   QVector<double> result;
+
+   for (int i = 0; i < X.count(); ++i)
+   {
+      result << X[i] / n;
+   }
+   return result;
 }
