@@ -36,7 +36,7 @@ void SingleExponentialTest::testComputeParameters()
    QVector<double> Y = {1, 3, 5, 7, 9};
    double Pre1 = 0.5;
    double Pre2 = 0.5;
-   std::pair<double, double> parameters = SingleExponential::computeParameters(X, Y, Pre1, Pre2);
+   QPair<double, double> parameters = SingleExponential::computeParameters(X, Y, Pre1, Pre2);
    QVERIFY2(qFuzzyCompare(parameters.first, mockP1), "First Parameter calculation failed!");
    QVERIFY2(qFuzzyCompare(parameters.second, mockP2), "Second Parameter calculation failed!");
 }

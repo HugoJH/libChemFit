@@ -4,6 +4,7 @@
 #include "PythonInterface.h"
 #include <QtMath>
 #include <utility>
+#include <QPair>
 
 SingleExponential::SingleExponential()
 {
@@ -41,7 +42,7 @@ double SingleExponential::computeSecondPreParameter(const QVector<double>& X, co
    return num / denom;
 }
 
-std::pair<double,double> SingleExponential::computeParameters(const QVector<double> &X,
+QPair<double,double> SingleExponential::computeParameters(const QVector<double> &X,
                                                               const QVector<double> &Y,
                                                               double pre1,
                                                               double pre2)
@@ -57,7 +58,7 @@ std::pair<double,double> SingleExponential::computeParameters(const QVector<doub
    QString functionName = "LMPARAMS";
    PythonInterface pyInterface;
    QVariant output = pyInterface.callFunction(moduleName, functionName, arguments);
-   std::pair<double,double> salida(output.toList()[0].toDouble(),
+   QPair<double,double> salida(output.toList()[0].toDouble(),
                                    output.toList()[1].toDouble());
    return salida;
 }
