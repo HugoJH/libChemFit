@@ -9,6 +9,7 @@ class mathOps
 
       static QVector<double> vLn(const QVector<double>& X);
       static QVector<double> vPow(const QVector<double>& X, double power);
+      static QVector<double> vAbs(const QVector<double>& X);
       static double mean(const QVector<double>& X);
       static double sum(const QVector<double>& X);
 };

@@ -23,6 +23,16 @@ QVector<double> mathOps::vPow(const QVector<double>& X, double power)
    return result;
 }
 
+QVector<double> mathOps::vAbs(const QVector<double>& X)
+{
+   QVector<double> result;
+   foreach (double d, X)
+   {
+      result << qAbs(d);
+   }
+   return result;
+}
+
 double mathOps::mean(const QVector<double>& X)
 {
    return sum(X) / X.count();
