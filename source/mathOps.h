@@ -1,32 +1,23 @@
 #ifndef MATHOPS_H
 #define MATHOPS_H
 
-#include <QVector>
+#include "QVectorExtended.h"
 
 class mathOps
 {
    public:
 
-      static QVector<double> vLn(const QVector<double>& X);
-      static QVector<double> vPow(const QVector<double>& X, double power);
-      static QVector<double> vAbs(const QVector<double>& X);
-      static double mean(const QVector<double>& X);
-      static double stdDev(const QVector<double>& X);
-      static double sum(const QVector<double>& X);
-      static double stdResidualsSum(const QVector<double> &sumOfComponents,
-                                    const QVector<double> &Y);
-      static double var(const QVector<double>& X);
+      static QVectorExtended vLn(const QVectorExtended& X);
+      static QVectorExtended vPow(const QVectorExtended& X, double power);
+      static QVectorExtended vAbs(const QVectorExtended& X);
+      static QVectorExtended vAdd(const QVectorExtended& X, const QVectorExtended& Y);
+      static double mean(const QVectorExtended& X);
+      static double stdDev(const QVectorExtended& X);
+      static double sum(const QVectorExtended& X);
+      static double stdResidualsSum(const QVectorExtended &sumOfComponents,
+                                    const QVectorExtended &Y);
+      static double var(const QVectorExtended& X);
 };
-QVector<double> operator+(const QVector<double> & X, const QVector<double> & Y);
-QVector<double> operator-(const QVector<double> & X, const QVector<double> & Y);
-
-QVector<double> operator+(const QVector<double> & X, double n);
-
-QVector<double> operator+(double n, const QVector<double> & X);
-
-QVector<double> operator*(const QVector<double> & X, const QVector<double> & Y);
-
-QVector<double> operator/(const QVector<double> & X, double n);
 
 
 #endif // MATHOPS_H

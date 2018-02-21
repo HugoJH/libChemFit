@@ -1,7 +1,7 @@
 #ifndef SINGLEEXPONENTIAL_H
 #define SINGLEEXPONENTIAL_H
 
-#include <QVector>
+#include "QVectorExtended.h"
 #include <QVariantList>
 #include <QPair>
 
@@ -9,12 +9,12 @@ class SingleExponential
 {
    public:
       SingleExponential();
-      static double computeFirstPreParameter(const QVector<double> & X, const QVector<double> & Y);
-      static double computeSecondPreParameter(const QVector<double> & X, const QVector<double> & Y);
-      static QPair<double, double> computeParameters(const QVector<double>& X, const QVector<double>& Y, double pre1, double pre2);
-      static QVector<double> computeExponential(const QVector<double>& X, double P1, double P2);
+      static double computeFirstPreParameter(const QVectorExtended & X, const QVectorExtended & Y);
+      static double computeSecondPreParameter(const QVectorExtended & X, const QVectorExtended & Y);
+      static QPair<double, double> computeParameters(const QVectorExtended& X, const QVectorExtended& Y, double pre1, double pre2);
+      static QVectorExtended computeExponential(const QVectorExtended& X, double P1, double P2);
    private:
-      static QVariantList prepareDataVector(const QVector<double>& X);
+      static QVariantList prepareDataVector(const QVectorExtended& X);
 
 };
 

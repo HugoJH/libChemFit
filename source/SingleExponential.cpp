@@ -11,7 +11,7 @@ SingleExponential::SingleExponential()
 
 }
 
-double SingleExponential::computeFirstPreParameter(const QVector<double>& X, const QVector<double>& Y)
+double SingleExponential::computeFirstPreParameter(const QVectorExtended& X, const QVectorExtended& Y)
 {
    double num;
    double denom;
@@ -28,7 +28,7 @@ double SingleExponential::computeFirstPreParameter(const QVector<double>& X, con
 
 }
 
-double SingleExponential::computeSecondPreParameter(const QVector<double>& X, const QVector<double>& Y)
+double SingleExponential::computeSecondPreParameter(const QVectorExtended& X, const QVectorExtended& Y)
 {
    double num;
    double denom;
@@ -42,8 +42,8 @@ double SingleExponential::computeSecondPreParameter(const QVector<double>& X, co
    return num / denom;
 }
 
-QPair<double,double> SingleExponential::computeParameters(const QVector<double> &X,
-                                                              const QVector<double> &Y,
+QPair<double,double> SingleExponential::computeParameters(const QVectorExtended &X,
+                                                              const QVectorExtended &Y,
                                                               double pre1,
                                                               double pre2)
 {
@@ -63,9 +63,9 @@ QPair<double,double> SingleExponential::computeParameters(const QVector<double> 
    return salida;
 }
 
-QVector<double> SingleExponential::computeExponential(const QVector<double>& X, double P1, double P2)
+QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, double P1, double P2)
 {
-   QVector <double> vector;
+   QVectorExtended vector;
    for (int i = 0; i < X.size(); ++i)
    {
        vector.push_back(P1 * exp(-P2 * X[i]));
@@ -73,7 +73,7 @@ QVector<double> SingleExponential::computeExponential(const QVector<double>& X, 
    return vector;
 }
 
-QVariantList SingleExponential::prepareDataVector(const QVector<double>& X)
+QVariantList SingleExponential::prepareDataVector(const QVectorExtended& X)
 {
    QVariantList list;
    foreach( const double &item, X)

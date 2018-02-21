@@ -2,9 +2,9 @@
 
 #include <QtMath>
 
-QVector<double> mathOps::vLn(const QVector<double>& X)
+QVectorExtended mathOps::vLn(const QVectorExtended& X)
 {
-   QVector<double> result;
+   QVectorExtended result;
 
    foreach (double d, X)
    {
@@ -13,9 +13,9 @@ QVector<double> mathOps::vLn(const QVector<double>& X)
    return result;
 }
 
-QVector<double> mathOps::vPow(const QVector<double>& X, double power)
+QVectorExtended mathOps::vPow(const QVectorExtended& X, double power)
 {
-   QVector<double> result;
+   QVectorExtended result;
    foreach (double d, X)
    {
       result << qPow(d, power);
@@ -23,9 +23,9 @@ QVector<double> mathOps::vPow(const QVector<double>& X, double power)
    return result;
 }
 
-QVector<double> mathOps::vAbs(const QVector<double>& X)
+QVectorExtended mathOps::vAbs(const QVectorExtended& X)
 {
-   QVector<double> result;
+   QVectorExtended result;
    foreach (double d, X)
    {
       result << qAbs(d);
@@ -33,12 +33,24 @@ QVector<double> mathOps::vAbs(const QVector<double>& X)
    return result;
 }
 
-double mathOps::mean(const QVector<double>& X)
+QVectorExtended mathOps::vAdd(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   QVectorExtended result;
+
+   for(int i = 0; i < X.count(); ++i)
+   {
+       result << X[i] + Y[i];
+   }
+
+   return result;
+}
+
+double mathOps::mean(const QVectorExtended& X)
 {
    return sum(X) / X.count();
 }
 
-double mathOps::sum(const QVector<double>& X)
+double mathOps::sum(const QVectorExtended& X)
 {
    double result = 0;
    foreach (double d, X)
@@ -47,7 +59,7 @@ double mathOps::sum(const QVector<double>& X)
    }
    return result;
 }
-double mathOps::var(const QVector<double> &X)
+double mathOps::var(const QVectorExtended &X)
 {
     double result  = 0;
     double mean_x = mean(X);
@@ -60,73 +72,13 @@ double mathOps::var(const QVector<double> &X)
 }
 
 
-double mathOps::stdDev(const QVector<double> &X)
+double mathOps::stdDev(const QVectorExtended &X)
 {
     return sqrt(var(X));
 }
-double mathOps::stdResidualsSum(const QVector<double>& sumOfComponents, const QVector<double>& Y)
+double mathOps::stdResidualsSum(const QVectorExtended& sumOfComponents, const QVectorExtended& Y)
 {
-   QVector<double> diffTC = mathOps::vPow(Y - sumOfComponents, 2);
+   QVectorExtended diffTC = mathOps::vPow(Y - sumOfComponents, 2);
    double stddiff = mathOps::stdDev(diffTC);
    return mathOps::sum(diffTC / stddiff);
-}
-
-QVector<double> operator+(const QVector<double>& X, const QVector<double>& Y)
-{
-   QVector<double> result;
-
-   for (int i = 0; i < X.count(); ++i)
-   {
-      result << X[i] + Y[i];
-   }
-   return result;
-}
-
-QVector<double> operator+(const QVector<double>& X, double n)
-{
-   QVector<double> result;
-
-   for (int i = 0; i < X.count(); ++i)
-   {
-      result << X[i] + n;
-   }
-   return result;
-}
-
-QVector<double> operator+(double n, const QVector<double>& X)
-{
-   return operator +(X, n);
-}
-
-QVector<double> operator*(const QVector<double>& X, const QVector<double>& Y)
-{
-   QVector<double> result;
-
-   for (int i = 0; i < X.count(); ++i)
-   {
-      result << X[i] * Y[i];
-   }
-   return result;
-}
-
-QVector<double> operator-(const QVector<double>& X, const QVector<double>& Y)
-{
-   QVector<double> result;
-
-   for (int i = 0; i < X.count(); ++i)
-   {
-      result << X[i] - Y[i];
-   }
-   return result;
-}
-
-QVector<double> operator/(const QVector<double>& X, double n)
-{
-   QVector<double> result;
-
-   for (int i = 0; i < X.count(); ++i)
-   {
-      result << X[i] / n;
-   }
-   return result;
 }

@@ -31,7 +31,8 @@ SOURCES += \
     SingleExponential.cpp \
     mathOps.cpp \
     PythonInterface.cpp \
-    DoubleExponential.cpp
+    DoubleExponential.cpp \
+    QVectorExtended.cpp
 
 HEADERS += \
     ChemFit.h \
@@ -39,7 +40,8 @@ HEADERS += \
     ChemFit_global.h \
     mathOps.h \
     PythonInterface.h \
-    DoubleExponential.h
+    DoubleExponential.h \
+    QVectorExtended.h
 
 unix {
     target.path = /usr/lib

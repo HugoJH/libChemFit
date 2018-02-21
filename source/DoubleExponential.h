@@ -1,18 +1,21 @@
 #ifndef DOUBLEEXPONENTIAL_H
 #define DOUBLEEXPONENTIAL_H
 
-#include <QVector>
+#include "QVectorExtended.h"
 
 class DoubleExponential
 {
    public:
       DoubleExponential();
-      static QVector<double> computePreParameters(const QVector<double>& X,
-                                                  const QVector<double>& Y);
-      static double computeFirstPreParameter(const QVector<double>& X,
-                                             const QVector<double>& Y);
-      static double computeSecondPreParameter(const QVector<double>& X,
-                                             const QVector<double>& Y);
+      static QVectorExtended computePreParameters(const QVectorExtended& X,
+                                                  const QVectorExtended& Y);
+      static QPair<double,double> computeSingleExponentialPreParameters(const QVectorExtended& X,
+                                                                        const QVectorExtended& Y);
+
+      static double computeFirstPreParameter(const QVectorExtended& X,
+                                             const QVectorExtended& Y);
+      static double computeSecondPreParameter(const QVectorExtended& X,
+                                             const QVectorExtended& Y);
 };
 
 #endif // DOUBLEEXPONENTIAL_H

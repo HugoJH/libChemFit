@@ -13,6 +13,7 @@ class DoubleExponentialTest : public TestSuite
       void testComputePreParameters();
       void testComputeFirstPreParameter();
       void testComputeSecondPreParameter();
+      void testComputeSingleExponentialPreParameters();
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H
