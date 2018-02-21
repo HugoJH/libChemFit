@@ -4,6 +4,13 @@
 #include <iostream>
 #include <QDebug>
 
+
+PythonInterface& PythonInterface::getInstance()
+{
+   static PythonInterface PyInterface;
+   return PyInterface;
+}
+
 PythonInterface::PythonInterface()
 {
    Py_Initialize();

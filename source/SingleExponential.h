@@ -15,7 +15,6 @@ class SingleExponential
       static QVectorExtended computeExponential(const QVectorExtended& X, double P1, double P2);
    private:
       static QVariantList prepareDataVector(const QVectorExtended& X);
-
 };
 
 #endif // SINGLEEXPONENTIAL_H

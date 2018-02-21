@@ -56,10 +56,8 @@ QPair<double,double> SingleExponential::computeParameters(const QVectorExtended 
 
    QString moduleName = "fit1comp";
    QString functionName = "LMPARAMS";
-   PythonInterface pyInterface;
-   QVariant output = pyInterface.callFunction(moduleName, functionName, arguments);
-   QPair<double,double> salida(output.toList()[0].toDouble(),
-                                   output.toList()[1].toDouble());
+   QVariant output = PythonInterface::getInstance().callFunction(moduleName, functionName, arguments);
+   QPair<double,double> salida(output.toList()[0].toDouble(), output.toList()[1].toDouble());
    return salida;
 }
 

@@ -9,13 +9,13 @@
 class PythonInterface
 {
    public:
-      PythonInterface();
-      ~PythonInterface();
-
+      static PythonInterface &getInstance();
       QVariant callFunction(const QString& moduleName,
                             const QString& functionName,
                             const QVariantList& arguments);
    private:
+      PythonInterface();
+      ~PythonInterface();
       PyObject* importModule(const QString & moduleName);
       PyObject* loadArguments(const QVariantList& args);
       PyObject* prepareFunction(PyObject* module, const QString& function);
