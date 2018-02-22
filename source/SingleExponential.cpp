@@ -49,8 +49,8 @@ QPair<double,double> SingleExponential::computeParameters(const QVectorExtended 
 {
    QVariantList arguments;
 
-   arguments.push_back(prepareDataVector(X));
-   arguments.push_back(prepareDataVector(Y));
+   arguments.push_back(X.toQVariantList());
+   arguments.push_back(Y.toQVariantList());
    arguments.push_back(pre1);
    arguments.push_back(pre2);
 
@@ -69,14 +69,4 @@ QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, 
        vector.push_back(P1 * exp(-P2 * X[i]));
    }
    return vector;
-}
-
-QVariantList SingleExponential::prepareDataVector(const QVectorExtended& X)
-{
-   QVariantList list;
-   foreach( const double &item, X)
-   {
-      list << item;
-   }
-   return list;
 }

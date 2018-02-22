@@ -2,6 +2,7 @@
 #define QVECTOREXTENDED_H
 
 #include <QVector>
+#include <QVariantList>
 
 class QVectorExtended : public QVector<double>
 {
@@ -19,6 +20,8 @@ class QVectorExtended : public QVector<double>
       QVectorExtended operator*(const QVectorExtended & X) const;
 
       QVectorExtended operator/(double n) const;
+
+      QVariantList toQVariantList() const;
 };
 
 

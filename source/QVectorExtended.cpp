@@ -70,5 +70,15 @@ QVectorExtended QVectorExtended::operator/(double n) const
    return result;
 }
 
+QVariantList QVectorExtended::toQVariantList() const
+{
+   QVariantList list;
+   foreach( const double &item, (*this))
+   {
+      list << item;
+   }
+   return list;
+}
+
 
 
