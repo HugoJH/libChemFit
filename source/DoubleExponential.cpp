@@ -134,9 +134,6 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
       parameters.push_back(Comp1ParametersDefinitive.second);
       parameters.push_back(Comp2ParametersDefinitive.first);
       parameters.push_back(Comp2ParametersDefinitive.second);
-      //      double P1,P2,P3,P4;
-      //      computeABCD(X,Y,P1,P2,P3,P4,A1,B1,A2,B2);
-
    }
    catch(int e)
    {
@@ -144,6 +141,11 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
    }
 
    return parameters;
+}
+
+QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, const QVectorExtended& Y)
+{
+
 }
 
 QPair<double, double> DoubleExponential::computeSingleExponentialPreParameters(const QVectorExtended& X, const QVectorExtended& Y)
