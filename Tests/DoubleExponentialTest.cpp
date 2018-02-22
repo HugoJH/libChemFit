@@ -16,10 +16,10 @@ void DoubleExponentialTest::testComputePreParameters()
                                         3.572062983850337,
                                         -0.1775673740401609};
    QVectorExtended preParameters = DoubleExponential::computePreParameters(X, Y);
-   QVERIFY2(qFuzzyCompare(preParameters[0], preParameterMocks[0]), "First Pre-Parameter calculation failed!");
-   QVERIFY2(qFuzzyCompare(preParameters[1], preParameterMocks[1]), "Second Pre-Parameter calculation failed!");
-   QVERIFY2(qFuzzyCompare(preParameters[2], preParameterMocks[2]), "Third Pre-Parameter calculation failed!");
-   QVERIFY2(qFuzzyCompare(preParameters[3], preParameterMocks[3]), "Fourth Pre-Parameter calculation failed!");
+   QVERIFY2(qFuzzyCompare(preParameters[0], preParameterMocks[0]), "First pre-parameter calculation failed!");
+   QVERIFY2(qFuzzyCompare(preParameters[1], preParameterMocks[1]), "Second pre-parameter calculation failed!");
+   QVERIFY2(qFuzzyCompare(preParameters[2], preParameterMocks[2]), "Third pre-parameter calculation failed!");
+   QVERIFY2(qFuzzyCompare(preParameters[3], preParameterMocks[3]), "Fourth pre-parameter calculation failed!");
 }
 
 void DoubleExponentialTest::testComputeFirstPreParameter()
