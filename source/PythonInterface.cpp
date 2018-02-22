@@ -79,7 +79,7 @@ QVariant PythonInterface::callFunction(const QString& moduleName, const QString&
 
    }
 
-   PyObject* pyFunction = prepareFunction(pyModule,functionName);
+   PyObject* pyFunction = prepareFunction(pyModule, functionName);
 
    if (pyFunction == nullptr)
    {

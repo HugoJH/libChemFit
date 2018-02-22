@@ -43,9 +43,9 @@ double SingleExponential::computeSecondPreParameter(const QVectorExtended& X, co
 }
 
 QPair<double,double> SingleExponential::computeParameters(const QVectorExtended &X,
-                                                              const QVectorExtended &Y,
-                                                              double pre1,
-                                                              double pre2)
+                                                          const QVectorExtended &Y,
+                                                          double pre1,
+                                                          double pre2)
 {
    QVariantList arguments;
 
@@ -57,8 +57,8 @@ QPair<double,double> SingleExponential::computeParameters(const QVectorExtended 
    QString moduleName = "fit1comp";
    QString functionName = "LMPARAMS";
    QVariant output = PythonInterface::getInstance().callFunction(moduleName, functionName, arguments);
-   QPair<double,double> salida(output.toList()[0].toDouble(), output.toList()[1].toDouble());
-   return salida;
+   QPair<double,double> parameters(output.toList()[0].toDouble(), output.toList()[1].toDouble());
+   return parameters;
 }
 
 QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, double P1, double P2)
