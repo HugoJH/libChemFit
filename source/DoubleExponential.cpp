@@ -12,7 +12,7 @@ DoubleExponential::DoubleExponential()
 QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X,
                                                         const QVectorExtended& Y)
 {
-   QVectorExtended parameters({0,0,0,0});
+   QVectorExtended parameters;
    try
    {
       int goldIndex = 2;
@@ -117,17 +117,18 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
                                                        Comp2ParametersDefinitive.first,
                                                        Comp2ParametersDefinitive.second);
 
-      QVectorExtended lny2 = Y - Comp2ExponentialDefinitive;
+
+      QVectorExtended lny2 = mathOps::vAbs(Y - Comp2ExponentialDefinitive);
       QPair<double, double> Comp1PreParametersDefinitive;
       Comp1PreParametersDefinitive = computeSingleExponentialPreParameters(X.mid(0, X.size()- goldIndex),
                                                                            lny2.mid(0, lny2.size() - goldIndex));
 
       QPair<double, double> Comp1ParametersDefinitive ;
 
-      Comp1ParametersDefinitive  = SingleExponential::computeParameters(
-                                      X.mid(0, X.size() - goldIndex),
-                                      lny2.mid(0, lny2.size() - goldIndex),
-                                      Comp1PreParametersDefinitive.first, Comp1PreParametersDefinitive.second);
+      Comp1ParametersDefinitive = SingleExponential::computeParameters(
+                                     X.mid(0, X.size() - goldIndex),
+                                     lny2.mid(0, lny2.size() - goldIndex),
+                                     Comp1PreParametersDefinitive.first, abs(Comp1PreParametersDefinitive.second));
 
       parameters.push_back(Comp1ParametersDefinitive.first);
       parameters.push_back(Comp1ParametersDefinitive.second);
