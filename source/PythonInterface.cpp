@@ -2,7 +2,6 @@
 
 #include <QVariantList>
 #include <iostream>
-#include <QDebug>
 
 
 PythonInterface& PythonInterface::getInstance()
@@ -127,7 +126,7 @@ QVariant PythonInterface::prepareOutput(PyObject* pyOutput)
    }
    else
    {
-      qDebug() << outputType << "to be implemented";
+      std::cout << qPrintable(outputType) << "to be implemented";
    }
 
    return output;
