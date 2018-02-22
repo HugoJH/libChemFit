@@ -25,23 +25,25 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
          Comp2PreParameters = computeSingleExponentialPreParameters(
                                  X.mid(X.size() - z),
                                  Y.mid(Y.size() - z));
-         QVector<double> vec(QVectorExtended({1,2,3}));
+
          QPair<double,double> parametersSEComp2;
          QPair<double,double> parametersSEComp1;
 
          //check for NaNs
-         if (!((Comp2PreParameters.first != Comp2PreParameters.first) ||
-               (Comp2PreParameters.second != Comp2PreParameters.second)))
+         if (!(std::isnan(Comp2PreParameters.first) ||
+               std::isnan(Comp2PreParameters.second)))
          {
+
             parametersSEComp2 = SingleExponential::computeParameters(
                                    X.mid(X.size() - z),
                                    Y.mid(Y.size() - z),
                                    Comp2PreParameters.first,
                                    abs(Comp2PreParameters.second));
             //check for NaNs
-            if (((parametersSEComp2.first != parametersSEComp2.first) ||
-                 (parametersSEComp2.second != parametersSEComp2.second)))
+            if ((std::isnan(parametersSEComp2.first) ||
+                 std::isnan(parametersSEComp2.second)))
             {
+
                continue;
             }
 
@@ -63,8 +65,8 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
                                  X.mid(0, X.size() - z),
                                  lny2.mid(0, lny2.size() - z));
 
-         if (!((Comp1PreParameters.first != Comp1PreParameters.first) ||
-               (Comp1PreParameters.second != Comp1PreParameters.second)))
+         if (!(std::isnan(Comp1PreParameters.first) ||
+               std::isnan(Comp1PreParameters.second)))
          {
             parametersSEComp1 = SingleExponential::computeParameters(
                                    X.mid(0, X.size() - z),
@@ -72,8 +74,8 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
                                    Comp1PreParameters.first,
                                    abs(Comp1PreParameters.second));
 
-            if (((parametersSEComp1.first != parametersSEComp1.second ) ||
-                 (parametersSEComp1.first != parametersSEComp1.second )))
+            if ((std::isnan(parametersSEComp1.first) ||
+                 std::isnan(parametersSEComp1.second)))
             {
                continue;
             }
