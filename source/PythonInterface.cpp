@@ -94,6 +94,7 @@ QVariant PythonInterface::callFunction(const QString& moduleName, const QString&
    if (pyOutput == nullptr)
    {
       std::cout << "Either Wrong parameters or wrong function object";
+      PyErr_Print();
       return QVariantList();
    }
 
