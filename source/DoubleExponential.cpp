@@ -1,5 +1,6 @@
 #include "DoubleExponential.h"
 #include "SingleExponential.h"
+#include "PythonInterface.h"
 #include "mathOps.h"
 
 #include <QtMath>
@@ -145,7 +146,24 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
 
 QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, const QVectorExtended& Y)
 {
+   QVectorExtended preParameters = computePreParameters(X,Y);
 
+   QVariantList arguments;
+   arguments.push_back(X.toQVariantList());
+   arguments.push_back(Y.toQVariantList());
+   arguments.push_back(preParameters[0]);
+   arguments.push_back(preParameters[1]);
+   arguments.push_back(preParameters[2]);
+   arguments.push_back(preParameters[3]);
+
+   QString moduleName = "fit2comp";
+   QString functionName = "LM2COMP";
+   QVariant output = PythonInterface::getInstance().callFunction(moduleName, functionName, arguments);
+   QVectorExtended parameters({output.toList()[0].toDouble(),
+                               output.toList()[1].toDouble(),
+                               output.toList()[2].toDouble(),
+                               output.toList()[3].toDouble()});
+   return parameters;
 }
 
 QPair<double, double> DoubleExponential::computeSingleExponentialPreParameters(const QVectorExtended& X, const QVectorExtended& Y)
