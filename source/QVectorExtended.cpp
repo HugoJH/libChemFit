@@ -53,7 +53,7 @@ QVectorExtended QVectorExtended::operator*(const QVectorExtended& X) const
 
    for (int i = 0; i < X.count(); ++i)
    {
-      result << (*this)[i] * X[i] ;
+      result << (*this)[i] * X[i];
    }
    return result;
 }
