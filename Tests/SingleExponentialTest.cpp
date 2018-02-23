@@ -103,7 +103,7 @@ void SingleExponentialTest::testComputeTheoreticalVolumeOfDistribution()
                         162.61,
                         125.91,
                         120.73};
-   const double mockTVoD = 12628.51765482094;
+   const double mockTVoD = 12628.81412042831;
    double mockDose = 3.235e6;
    double TVoD = SingleExponential::computeTheoreticalVolumeOfDistribution(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(TVoD, mockTVoD), "TVoD calculation failed!");
