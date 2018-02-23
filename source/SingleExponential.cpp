@@ -129,6 +129,11 @@ double SingleExponential::computeExperimentalClearance(const QVectorExtended& X,
    return dose / computeExperimentalAreaUnderCurve(X, Y);
 }
 
+double SingleExponential::computeTheoreticalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+{
+   return 0.0;
+}
+
 double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double dose)
 {
    return qLn(2) * (computeExperimentalVolumeOfDistribution(X, Y, dose) /
