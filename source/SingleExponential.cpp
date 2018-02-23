@@ -110,7 +110,9 @@ double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
    return parameters.first/parameters.second;
 }
 
-double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y)
+double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double dose)
 {
-   return 0.0;
+   QPair<double, double> parameters = computeParameters(X, Y);
+   double EAUC = computeExperimentalAreaUnderCurve(X, Y);
+   return dose / (parameters.second * EAUC);
 }

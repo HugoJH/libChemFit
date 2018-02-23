@@ -80,20 +80,16 @@ void SingleExponentialTest::testComputeTheoreticalAreaUnderCurve()
 void SingleExponentialTest::testComputeExperimentalVolumeOfDistribution()
 {
 
-   QVectorExtended X = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-   QVectorExtended Y = {2,
-                        1.2727168592074,
-                        0.954066036314595,
-                        0.790605289049582,
-                        0.688635684924374,
-                        0.613268606711719,
-                        0.551290388270693,
-                        0.497497185756964,
-                        0.449664426745124,
-                        0.406693069544686,
-                        0.367924841101205};
-   const double mockEVoD = 0.5;
-   double EVoD= SingleExponential::computeExperimentalVolumeOfDistribution(X,Y);
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockEVoD = 12628.51765482094;
+   double mockDose = 3.235e6;
+   double EVoD = SingleExponential::computeExperimentalVolumeOfDistribution(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(EVoD, mockEVoD), "EVoD calculation failed!");
 }
 
