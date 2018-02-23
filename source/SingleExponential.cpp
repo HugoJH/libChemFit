@@ -87,5 +87,19 @@ QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, 
 
 double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QPair<double, double> parameters = computeParameters(X, Y);
+   QVector<double> vEAUC;
+   double temp = (((parameters.first) + Y[0]) / 2.0);
+   temp = temp * X[0];
+   vEAUC << temp;
+
+   for (int i = 0; i < (X.size() - 1); ++i )
+   {
+       int a = X[i + 1] - X[i];
+       vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
+   }
+
+   vEAUC << Y.last() / parameters.second;
+
+   return mathOps::sum(vEAUC);
 }
