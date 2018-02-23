@@ -126,5 +126,5 @@ double SingleExponential::computeTheoreticalVolumeOfDistribution(const QVectorEx
 
 double SingleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
 {
-   return 0.0;
+   return dose / computeExperimentalAreaUnderCurve(X, Y);
 }

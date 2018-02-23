@@ -119,10 +119,10 @@ void SingleExponentialTest::testComputeExperimentalClearance()
                         162.61,
                         125.91,
                         120.73};
-   const double mockECL = 12628.81412042831;
+   const double mockECL = 19.701127174647876;
    double mockDose = 3.235e6;
    double ECL = SingleExponential::computeExperimentalClearance(X, Y, mockDose);
-   QVERIFY2(qFuzzyCompare(ECL, mockECL), "TVoD calculation failed!");
+   QVERIFY2(qFuzzyCompare(ECL, mockECL), "ECL calculation failed!");
 }
 
 static SingleExponentialTest SETest;
