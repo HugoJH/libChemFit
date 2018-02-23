@@ -18,8 +18,8 @@ double SingleExponential::computeFirstPreParameter(const QVectorExtended& X, con
 
    num = (mathOps::sum(mathOps::vLn(Y)) * \
           mathOps::sum(mathOps::vPow(X, 2))) - \
-           (mathOps::sum(X) * \
-            mathOps::sum(X * mathOps::vLn(Y)));
+         (mathOps::sum(X) * \
+          mathOps::sum(X * mathOps::vLn(Y)));
 
    denom = (X.size() * mathOps::sum(mathOps::vPow(X, 2))) - \
            (qPow(mathOps::sum(X), 2));
@@ -34,7 +34,7 @@ double SingleExponential::computeSecondPreParameter(const QVectorExtended& X, co
    double denom;
 
    num = (X.size() * mathOps::sum(X * mathOps::vLn(Y))) - \
-           (mathOps::sum(X) * mathOps::sum(mathOps::vLn(Y)));
+         (mathOps::sum(X) * mathOps::sum(mathOps::vLn(Y)));
 
    denom = (X.size() * mathOps::sum(mathOps::vPow(X, 2))) - \
            (qPow(mathOps::sum(X), 2));
@@ -80,7 +80,7 @@ QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, 
    QVectorExtended vector;
    for (int i = 0; i < X.size(); ++i)
    {
-       vector.push_back(P1 * exp(-P2 * X[i]));
+      vector.push_back(P1 * exp(-P2 * X[i]));
    }
    return vector;
 }
@@ -95,8 +95,8 @@ double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
 
    for (int i = 0; i < (X.size() - 1); ++i )
    {
-       int a = X[i + 1] - X[i];
-       vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
+      int a = X[i + 1] - X[i];
+      vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
    }
 
    vEAUC << Y.last() / parameters.second;
