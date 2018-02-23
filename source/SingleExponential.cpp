@@ -106,5 +106,6 @@ double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
 
 double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QPair<double, double> parameters = computeParameters(X, Y);
+   return parameters.first/parameters.second;
 }
