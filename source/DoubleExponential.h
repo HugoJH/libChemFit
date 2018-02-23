@@ -7,10 +7,11 @@ class DoubleExponential
 {
    public:
       DoubleExponential();
-      static QVectorExtended computePreParameters(const QVectorExtended& X,
-                                                  const QVectorExtended& Y);
       static QVectorExtended computeParameters(const QVectorExtended& X,
                                                const QVectorExtended& Y);
+   private:
+      static QVectorExtended computePreParameters(const QVectorExtended& X,
+                                                  const QVectorExtended& Y);
       static QPair<double,double> computeSingleExponentialPreParameters(const QVectorExtended& X,
                                                                         const QVectorExtended& Y);
 

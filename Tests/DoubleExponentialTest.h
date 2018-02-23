@@ -10,11 +10,8 @@ class DoubleExponentialTest : public TestSuite
       DoubleExponentialTest();
       using TestSuite::TestSuite;
    private slots:
-      void testComputePreParameters();
       void testComputeParameters();
-      void testComputeFirstPreParameter();
-      void testComputeSecondPreParameter();
-      void testComputeSingleExponentialPreParameters();
+
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H
