@@ -16,6 +16,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeTheoreticalAreaUnderCurve();
       void testComputeExperimentalVolumeOfDistribution();
       void testComputeTheoreticalVolumeOfDistribution();
+      void testComputeExperimentalClearance();
 
 };
 

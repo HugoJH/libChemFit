@@ -109,4 +109,20 @@ void SingleExponentialTest::testComputeTheoreticalVolumeOfDistribution()
    QVERIFY2(qFuzzyCompare(TVoD, mockTVoD), "TVoD calculation failed!");
 }
 
+void SingleExponentialTest::testComputeExperimentalClearance()
+{
+
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockECL = 12628.81412042831;
+   double mockDose = 3.235e6;
+   double ECL = SingleExponential::computeExperimentalClearance(X, Y, mockDose);
+   QVERIFY2(qFuzzyCompare(ECL, mockECL), "TVoD calculation failed!");
+}
+
 static SingleExponentialTest SETest;

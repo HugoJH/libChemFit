@@ -123,3 +123,8 @@ double SingleExponential::computeTheoreticalVolumeOfDistribution(const QVectorEx
    double TAUC = computeTheoreticalAreaUnderCurve(X, Y);
    return dose / (parameters.second * TAUC);
 }
+
+double SingleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+{
+   return 0.0;
+}
