@@ -109,3 +109,8 @@ double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
    QPair<double, double> parameters = computeParameters(X, Y);
    return parameters.first/parameters.second;
 }
+
+double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
