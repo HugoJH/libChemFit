@@ -133,7 +133,7 @@ void SingleExponentialTest::testComputeTheoreticalClearance()
                         162.61,
                         125.91,
                         120.73};
-   const double mockTCL = 19.701127174647876;
+   const double mockTCL = 19.701589676011327;
    double mockDose = 3.235e6;
    double TCL = SingleExponential::computeTheoreticalClearance(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(TCL, mockTCL), "TCL calculation failed!");

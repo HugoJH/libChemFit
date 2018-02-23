@@ -131,7 +131,7 @@ double SingleExponential::computeExperimentalClearance(const QVectorExtended& X,
 
 double SingleExponential::computeTheoreticalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
 {
-   return 0.0;
+   return dose / computeTheoreticalAreaUnderCurve(X, Y);
 }
 
 double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double dose)
