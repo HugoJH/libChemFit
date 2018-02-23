@@ -12,13 +12,11 @@ SingleExponentialTest::SingleExponentialTest()
 
 void SingleExponentialTest::testComputeParameters()
 {
-   const double mockP1 = 1.4078409462923063;
-   const double mockP2 = -0.3802344472200062;
+   const double mockP1 = -13.012171317394735;
+   const double mockP2 = 69.75789628400081;
    QVectorExtended X = {1, 2, 3, 4, 5};
    QVectorExtended Y = {1, 3, 5, 7, 9};
-   double Pre1 = 0.5;
-   double Pre2 = 0.5;
-   QPair<double, double> parameters = SingleExponential::computeParameters(X, Y, Pre1, Pre2);
+   QPair<double, double> parameters = SingleExponential::computeParameters(X, Y);
    QVERIFY2(qFuzzyCompare(parameters.first, mockP1), "First Parameter calculation failed!");
    QVERIFY2(qFuzzyCompare(parameters.second, mockP2), "Second Parameter calculation failed!");
 }

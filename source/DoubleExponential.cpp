@@ -19,8 +19,8 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
       int bestIndex = findBestIndex(X, Y);
 
       QPair<double,double> Comp2ParametersDefinitive;
-      Comp2ParametersDefinitive = computeSingleExponentialParameters(X.mid(X.size() - bestIndex),
-                                                                     Y.mid(Y.size() - bestIndex));
+      Comp2ParametersDefinitive = SingleExponential::computeParameters(X.mid(X.size() - bestIndex),
+                                                                       Y.mid(Y.size() - bestIndex));
 
       QVector <double> Comp2ExponentialDefinitive = SingleExponential::computeExponential(
                                                        X,
@@ -30,8 +30,8 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
       QVectorExtended lny2 = mathOps::vAbs(Y - Comp2ExponentialDefinitive);
 
       QPair<double,double> Comp1ParametersDefinitive;
-      Comp1ParametersDefinitive = computeSingleExponentialParameters(X.mid(0, X.size() - bestIndex),
-                                                                     lny2.mid(0, lny2.size() - bestIndex));
+      Comp1ParametersDefinitive = SingleExponential::computeParameters(X.mid(0, X.size() - bestIndex),
+                                                                       lny2.mid(0, lny2.size() - bestIndex));
 
       parameters.push_back(Comp2ParametersDefinitive.first);
       parameters.push_back(Comp2ParametersDefinitive.second);
@@ -68,36 +68,6 @@ QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, c
    return parameters;
 }
 
-QPair<double, double> DoubleExponential::computeSingleExponentialPreParameters(const QVectorExtended& X, const QVectorExtended& Y)
-{
-   QPair<double, double> preParameters;
-   preParameters.first = exp(computeFirstPreParameter(X,Y));
-   preParameters.second = computeSecondPreParameter(X,Y);
-   return preParameters;
-}
-
-QPair<double, double> DoubleExponential::computeSingleExponentialParameters(const QVectorExtended& X, const QVectorExtended& Y)
-{
-   QPair<double, double> SingleExponentialPreParameters;
-
-   SingleExponentialPreParameters = computeSingleExponentialPreParameters(X, Y);
-
-   //check for NaNs
-   QPair<double, double> SingleExponentialParameters(-2,-2);
-   if (!(std::isnan(SingleExponentialPreParameters.first) ||
-         std::isnan(SingleExponentialPreParameters.second)))
-   {
-      SingleExponentialParameters = SingleExponential::computeParameters(
-                                       X,
-                                       Y,
-                                       SingleExponentialPreParameters.first,
-                                       abs(SingleExponentialPreParameters.second));
-   }
-
-
-   return SingleExponentialParameters;
-}
-
 int DoubleExponential::findBestIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;
@@ -107,8 +77,8 @@ int DoubleExponential::findBestIndex(const QVectorExtended& X, const QVectorExte
    {
       /*----------Segunda---exponencial-----------------*/
       QPair<double,double> parametersSEComp2;
-      parametersSEComp2 = computeSingleExponentialParameters(X.mid(X.size() - z),
-                                                             Y.mid(Y.size() - z));
+      parametersSEComp2 = SingleExponential::computeParameters(X.mid(X.size() - z),
+                                                               Y.mid(Y.size() - z));
       if ((std::isnan(parametersSEComp2.first) ||
            std::isnan(parametersSEComp2.second)))
       {
@@ -125,8 +95,8 @@ int DoubleExponential::findBestIndex(const QVectorExtended& X, const QVectorExte
 
       /*----------Primera---exponencial-----------------*/
       QPair<double, double> parametersSEComp1;
-      parametersSEComp1 = computeSingleExponentialParameters(X.mid(0, X.size() - z),
-                                                             lny2.mid(0, lny2.size() - z));
+      parametersSEComp1 = SingleExponential::computeParameters(X.mid(0, X.size() - z),
+                                                               lny2.mid(0, lny2.size() - z));
 
       if ((std::isnan(parametersSEComp1.first) ||
            std::isnan(parametersSEComp1.second)))

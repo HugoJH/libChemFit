@@ -42,22 +42,36 @@ double SingleExponential::computeSecondPreParameter(const QVectorExtended& X, co
    return num / denom;
 }
 
-QPair<double,double> SingleExponential::computeParameters(const QVectorExtended &X,
-                                                          const QVectorExtended &Y,
-                                                          double pre1,
-                                                          double pre2)
+QPair<double, double> SingleExponential::computePreParameters(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   QVariantList arguments;
+   QPair<double, double> preParameters;
+   preParameters.first = computeFirstPreParameter(X, Y);
+   preParameters.second = computeSecondPreParameter(X, Y);
+   return preParameters;
+}
 
-   arguments.push_back(X.toQVariantList());
-   arguments.push_back(Y.toQVariantList());
-   arguments.push_back(pre1);
-   arguments.push_back(pre2);
+QPair<double,double> SingleExponential::computeParameters(const QVectorExtended &X,
+                                                          const QVectorExtended &Y)
+{
+   QPair<double,double> parameters(-1,-1);
 
-   QString moduleName = "fit1comp";
-   QString functionName = "LMPARAMS";
-   QVariant output = PythonInterface::getInstance().callFunction(moduleName, functionName, arguments);
-   QPair<double,double> parameters(output.toList()[0].toDouble(), output.toList()[1].toDouble());
+   QPair<double, double> preParameters = computePreParameters(X, Y);
+
+   if (!(std::isnan(preParameters.first) ||
+         std::isnan(preParameters.second)))
+   {
+      QVariantList arguments;
+      arguments.push_back(X.toQVariantList());
+      arguments.push_back(Y.toQVariantList());
+      arguments.push_back(preParameters.first);
+      arguments.push_back(preParameters.second);
+
+      QString moduleName = "fit1comp";
+      QString functionName = "LMPARAMS";
+      QVariant output = PythonInterface::getInstance().callFunction(moduleName, functionName, arguments);
+      parameters.first = output.toList()[0].toDouble();
+      parameters.second = output.toList()[1].toDouble();
+   }
    return parameters;
 }
 

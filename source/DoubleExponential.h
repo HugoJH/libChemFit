@@ -12,10 +12,6 @@ class DoubleExponential
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);
-      static QPair<double,double> computeSingleExponentialPreParameters(const QVectorExtended& X,
-                                                                        const QVectorExtended& Y);
-      static QPair<double,double> computeSingleExponentialParameters(const QVectorExtended& X,
-                                                                     const QVectorExtended& Y);
       static int findBestIndex(const QVectorExtended& X,
                                           const QVectorExtended& Y);
       static double computeFirstPreParameter(const QVectorExtended& X,
