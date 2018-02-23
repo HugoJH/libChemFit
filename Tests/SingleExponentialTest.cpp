@@ -134,7 +134,7 @@ void SingleExponentialTest::testComputeHalfLife()
                         162.61,
                         125.91,
                         120.73};
-   const double mockHL = 0.5;
+   const double mockHL = 444.31068991599864;
    double mockDose = 3.235e6;
    double HL = SingleExponential::computeHalfLife(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(HL, mockHL), "HL calculation failed!");

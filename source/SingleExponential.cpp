@@ -131,5 +131,6 @@ double SingleExponential::computeExperimentalClearance(const QVectorExtended& X,
 
 double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double dose)
 {
-   return 0.0;
+   return qLn(2) * (computeExperimentalVolumeOfDistribution(X, Y, dose) /
+                    computeExperimentalClearance(X, Y, dose));
 }
