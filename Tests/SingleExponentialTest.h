@@ -13,6 +13,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeParameters();
       void testComputeSingleExponential();
       void testComputeExperimentalAreaUnderCurve();
+      void testComputeTheoreticalAreaUnderCurve();
 
 };
 

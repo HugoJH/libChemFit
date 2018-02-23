@@ -103,3 +103,8 @@ double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
 
    return mathOps::sum(vEAUC);
 }
+
+double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
