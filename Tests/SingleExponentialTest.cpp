@@ -74,7 +74,7 @@ void SingleExponentialTest::testComputeTheoreticalAreaUnderCurve()
                         0.367924841101205};
    const double mockTAUC = 8.469526780929929;
    double TAUC = SingleExponential::computeTheoreticalAreaUnderCurve(X,Y);
-   QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "EAUC calculation failed!");
+   QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "TAUC calculation failed!");
 }
 
 static SingleExponentialTest SETest;
