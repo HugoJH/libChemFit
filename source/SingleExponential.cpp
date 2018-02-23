@@ -84,3 +84,8 @@ QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, 
    }
    return vector;
 }
+
+double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}

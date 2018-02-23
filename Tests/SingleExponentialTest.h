@@ -12,6 +12,8 @@ class SingleExponentialTest : public TestSuite
    private slots:
       void testComputeParameters();
       void testComputeSingleExponential();
+      void testComputeExperimentalAreaUnderCurve();
+
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H
