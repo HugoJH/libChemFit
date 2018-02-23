@@ -14,6 +14,8 @@ class DoubleExponential
                                                   const QVectorExtended& Y);
       static QPair<double,double> computeSingleExponentialPreParameters(const QVectorExtended& X,
                                                                         const QVectorExtended& Y);
+      static QPair<double,double> computeSingleExponentialParameters(const QVectorExtended& X,
+                                                                     const QVectorExtended& Y);
 
       static double computeFirstPreParameter(const QVectorExtended& X,
                                              const QVectorExtended& Y);

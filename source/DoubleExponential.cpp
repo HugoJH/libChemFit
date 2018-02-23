@@ -22,35 +22,13 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
       for (int z = 2; z < X.size(); ++z)
       {
          /*----------Segunda---exponencial-----------------*/
-         QPair<double, double> Comp2PreParameters;
-         Comp2PreParameters = computeSingleExponentialPreParameters(
-                                 X.mid(X.size() - z),
-                                 Y.mid(Y.size() - z));
-
          QPair<double,double> parametersSEComp2;
-         QPair<double,double> parametersSEComp1;
-
-         //check for NaNs
-         if (!(std::isnan(Comp2PreParameters.first) ||
-               std::isnan(Comp2PreParameters.second)))
+         parametersSEComp2 = computeSingleExponentialParameters(X.mid(X.size() - z),
+                                                                Y.mid(Y.size() - z));
+         if ((std::isnan(parametersSEComp2.first) ||
+              std::isnan(parametersSEComp2.second)))
          {
 
-            parametersSEComp2 = SingleExponential::computeParameters(
-                                   X.mid(X.size() - z),
-                                   Y.mid(Y.size() - z),
-                                   Comp2PreParameters.first,
-                                   abs(Comp2PreParameters.second));
-            //check for NaNs
-            if ((std::isnan(parametersSEComp2.first) ||
-                 std::isnan(parametersSEComp2.second)))
-            {
-
-               continue;
-            }
-
-         }
-         else
-         {
             continue;
          }
 
@@ -61,27 +39,13 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
                                parametersSEComp2.second);
 
          QVectorExtended lny2 = mathOps::vAbs(Y - exponentialComp2);
-         QPair<double, double> Comp1PreParameters;
-         Comp1PreParameters = computeSingleExponentialPreParameters(
-                                 X.mid(0, X.size() - z),
-                                 lny2.mid(0, lny2.size() - z));
 
-         if (!(std::isnan(Comp1PreParameters.first) ||
-               std::isnan(Comp1PreParameters.second)))
-         {
-            parametersSEComp1 = SingleExponential::computeParameters(
-                                   X.mid(0, X.size() - z),
-                                   lny2.mid(0, lny2.size() - z),
-                                   Comp1PreParameters.first,
-                                   abs(Comp1PreParameters.second));
+         QPair<double, double> parametersSEComp1;
+         parametersSEComp1 = computeSingleExponentialParameters(X.mid(0, X.size() - z),
+                                                                lny2.mid(0, lny2.size() - z));
 
-            if ((std::isnan(parametersSEComp1.first) ||
-                 std::isnan(parametersSEComp1.second)))
-            {
-               continue;
-            }
-         }
-         else
+         if ((std::isnan(parametersSEComp1.first) ||
+              std::isnan(parametersSEComp1.second)))
          {
             continue;
          }
@@ -91,9 +55,9 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
                                                X,
                                                parametersSEComp1.first,
                                                parametersSEComp1.second);
-         //Check on the operator overloading clashing between qvector.h and mathOps
-         double stdRes = mathOps::stdResidualsSum(exponentialComp2 + exponentialComp1,
-                                                  Y);
+
+         double stdRes = mathOps::stdResidualsSum(exponentialComp2 +
+                                                  exponentialComp1, Y);
          if (stdRes < goldStdRes)
          {
             goldIndex = z;
@@ -101,40 +65,25 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
          }
       }
 
-      //residualsSum_ = goldStdRes;
-
-      QPair<double, double> Comp2PreParametersDefinitive;
-      Comp2PreParametersDefinitive = computeSingleExponentialPreParameters(X.mid(X.size() - goldIndex),
-                                                                           Y.mid(Y.size() - goldIndex));
-
       QPair<double,double> Comp2ParametersDefinitive;
-      Comp2ParametersDefinitive = SingleExponential::computeParameters(X.mid(X.size() - goldIndex),
-                                                                       Y.mid(Y.size() - goldIndex),
-                                                                       Comp2PreParametersDefinitive.first,
-                                                                       Comp2PreParametersDefinitive.second);
+      Comp2ParametersDefinitive = computeSingleExponentialParameters(X.mid(X.size() - goldIndex),
+                                                                     Y.mid(Y.size() - goldIndex));
 
       QVector <double> Comp2ExponentialDefinitive = SingleExponential::computeExponential(
                                                        X,
                                                        Comp2ParametersDefinitive.first,
                                                        Comp2ParametersDefinitive.second);
 
-
       QVectorExtended lny2 = mathOps::vAbs(Y - Comp2ExponentialDefinitive);
-      QPair<double, double> Comp1PreParametersDefinitive;
-      Comp1PreParametersDefinitive = computeSingleExponentialPreParameters(X.mid(0, X.size()- goldIndex),
-                                                                           lny2.mid(0, lny2.size() - goldIndex));
 
-      QPair<double, double> Comp1ParametersDefinitive ;
+      QPair<double,double> Comp1ParametersDefinitive;
+      Comp1ParametersDefinitive = computeSingleExponentialParameters(X.mid(0, X.size()- goldIndex),
+                                                                     lny2.mid(0, lny2.size() - goldIndex));
 
-      Comp1ParametersDefinitive = SingleExponential::computeParameters(
-                                     X.mid(0, X.size() - goldIndex),
-                                     lny2.mid(0, lny2.size() - goldIndex),
-                                     Comp1PreParametersDefinitive.first, abs(Comp1PreParametersDefinitive.second));
-
-      parameters.push_back(Comp1ParametersDefinitive.first);
-      parameters.push_back(Comp1ParametersDefinitive.second);
       parameters.push_back(Comp2ParametersDefinitive.first);
       parameters.push_back(Comp2ParametersDefinitive.second);
+      parameters.push_back(Comp1ParametersDefinitive.first);
+      parameters.push_back(Comp1ParametersDefinitive.second);
    }
    catch(int e)
    {
@@ -172,6 +121,28 @@ QPair<double, double> DoubleExponential::computeSingleExponentialPreParameters(c
    preParameters.first = exp(computeFirstPreParameter(X,Y));
    preParameters.second = computeSecondPreParameter(X,Y);
    return preParameters;
+}
+
+QPair<double, double> DoubleExponential::computeSingleExponentialParameters(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   QPair<double, double> SingleExponentialPreParameters;
+
+   SingleExponentialPreParameters = computeSingleExponentialPreParameters(X, Y);
+
+   //check for NaNs
+   QPair<double, double> SingleExponentialParameters(-2,-2);
+   if (!(std::isnan(SingleExponentialPreParameters.first) ||
+         std::isnan(SingleExponentialPreParameters.second)))
+   {
+      SingleExponentialParameters = SingleExponential::computeParameters(
+                                       X,
+                                       Y,
+                                       SingleExponentialPreParameters.first,
+                                       abs(SingleExponentialPreParameters.second));
+   }
+
+
+   return SingleExponentialParameters;
 }
 
 
