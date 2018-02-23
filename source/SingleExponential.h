@@ -16,6 +16,7 @@ class SingleExponential
       static double computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double dose);
       static double computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double dose);
       static double computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose);
+      static double computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double dose);
    private:
       static double computeFirstPreParameter(const QVectorExtended & X, const QVectorExtended & Y);
       static double computeSecondPreParameter(const QVectorExtended & X, const QVectorExtended & Y);

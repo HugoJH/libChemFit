@@ -17,6 +17,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeExperimentalVolumeOfDistribution();
       void testComputeTheoreticalVolumeOfDistribution();
       void testComputeExperimentalClearance();
+      void testComputeHalfLife();
 
 };
 
