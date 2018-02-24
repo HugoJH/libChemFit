@@ -110,32 +110,32 @@ double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
    return parameters.first/parameters.second;
 }
 
-double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
    QPair<double, double> parameters = computeParameters(X, Y);
    double EAUC = computeExperimentalAreaUnderCurve(X, Y);
-   return dose / (parameters.second * EAUC);
+   return doseInMicrograms / (parameters.second * EAUC);
 }
 
-double SingleExponential::computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+double SingleExponential::computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
    QPair<double, double> parameters = computeParameters(X, Y);
    double TAUC = computeTheoreticalAreaUnderCurve(X, Y);
-   return dose / (parameters.second * TAUC);
+   return doseInMicrograms / (parameters.second * TAUC);
 }
 
-double SingleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+double SingleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
-   return dose / computeExperimentalAreaUnderCurve(X, Y);
+   return doseInMicrograms / computeExperimentalAreaUnderCurve(X, Y);
 }
 
-double SingleExponential::computeTheoreticalClearance(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+double SingleExponential::computeTheoreticalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
-   return dose / computeTheoreticalAreaUnderCurve(X, Y);
+   return doseInMicrograms / computeTheoreticalAreaUnderCurve(X, Y);
 }
 
-double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double dose)
+double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
-   return qLn(2) * (computeExperimentalVolumeOfDistribution(X, Y, dose) /
-                    computeExperimentalClearance(X, Y, dose));
+   return qLn(2) * (computeExperimentalVolumeOfDistribution(X, Y, doseInMicrograms) /
+                    computeExperimentalClearance(X, Y, doseInMicrograms));
 }
