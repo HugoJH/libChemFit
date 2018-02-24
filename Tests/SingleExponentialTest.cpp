@@ -86,12 +86,13 @@ void SingleExponentialTest::testComputeAreaUnderCurvePartials()
                         162.61,
                         125.91,
                         120.73};
-   QVectorExtended mockAUCPartials = {210.52,
-                                      192.47,
-                                      172.51,
-                                      162.61,
-                                      125.91,
-                                      120.73};
+   QVectorExtended mockAUCPartials = {29167.5147228347,
+                                      11082.225,
+                                      13686.75,
+                                      7540.200000000001,
+                                      21639,
+                                      3699.6,
+                                      77388.51299982953};
 
 
    QVectorExtended AUCPArtials = SingleExponential::computeAreaUnderCurvePartials(X, Y);

@@ -87,21 +87,7 @@ QVectorExtended SingleExponential::computeExponential(const QVectorExtended& X, 
 
 double SingleExponential::computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   QPair<double, double> parameters = computeParameters(X, Y);
-   QVector<double> vEAUC;
-   double temp = (((parameters.first) + Y[0]) / 2.0);
-   temp = temp * X[0];
-   vEAUC << temp;
-
-   for (int i = 0; i < (X.size() - 1); ++i )
-   {
-      int a = X[i + 1] - X[i];
-      vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
-   }
-
-   vEAUC << Y.last() / parameters.second;
-
-   return mathOps::sum(vEAUC);
+   return mathOps::sum(computeAreaUnderCurvePartials(X, Y));
 }
 
 double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
@@ -112,8 +98,21 @@ double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
 
 QVectorExtended SingleExponential::computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   QVectorExtended partials(X.size(), 0.0);
-   return partials;
+   QPair<double, double> parameters = computeParameters(X, Y);
+   double temp = (((parameters.first) + Y[0]) / 2.0);
+   QVector<double> AUCPartials;
+   temp = temp * X[0];
+   AUCPartials << temp;
+
+   for (int i = 0; i < (X.size() - 1); ++i)
+   {
+      int a = X[i + 1] - X[i];
+      AUCPartials << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
+   }
+
+   AUCPartials << Y.last() / parameters.second;
+
+   return AUCPartials;
 }
 
 double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
