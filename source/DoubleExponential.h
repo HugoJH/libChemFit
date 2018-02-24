@@ -12,7 +12,7 @@ class DoubleExponential
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);
-      static int findBestIndex(const QVectorExtended& X,
+      static int findBestCombinationsofPreParametersIndex(const QVectorExtended& X,
                                           const QVectorExtended& Y);
       static double computeFirstPreParameter(const QVectorExtended& X,
                                              const QVectorExtended& Y);
