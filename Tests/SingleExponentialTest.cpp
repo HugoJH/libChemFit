@@ -77,6 +77,30 @@ void SingleExponentialTest::testComputeTheoreticalAreaUnderCurve()
    QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "TAUC calculation failed!");
 }
 
+void SingleExponentialTest::testComputeAreaUnderCurvePartials()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   QVectorExtended mockAUCPartials = {210.52,
+                                      192.47,
+                                      172.51,
+                                      162.61,
+                                      125.91,
+                                      120.73};
+
+
+   QVectorExtended AUCPArtials = SingleExponential::computeAreaUnderCurvePartials(X, Y);
+   for(int i = 0; i < AUCPArtials.size(); ++i)
+   {
+      QVERIFY2(qFuzzyCompare(mockAUCPartials[i], AUCPArtials[i]), "AUC partials calculation failed!");
+   }
+}
+
 void SingleExponentialTest::testComputeExperimentalVolumeOfDistribution()
 {
 

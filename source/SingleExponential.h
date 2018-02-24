@@ -13,6 +13,7 @@ class SingleExponential
       static QVectorExtended computeExponential(const QVectorExtended& X, double P1, double P2);
       static double computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y);
       static double computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y);
+      static QVectorExtended computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y);
       static double computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms);
       static double computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms);
       static double computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms);

@@ -14,12 +14,12 @@ class SingleExponentialTest : public TestSuite
       void testComputeSingleExponential();
       void testComputeExperimentalAreaUnderCurve();
       void testComputeTheoreticalAreaUnderCurve();
+      void testComputeAreaUnderCurvePartials();
       void testComputeExperimentalVolumeOfDistribution();
       void testComputeTheoreticalVolumeOfDistribution();
       void testComputeExperimentalClearance();
       void testComputeTheoreticalClearance();
       void testComputeHalfLife();
-
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H

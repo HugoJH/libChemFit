@@ -110,6 +110,12 @@ double SingleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
    return parameters.first/parameters.second;
 }
 
+QVectorExtended SingleExponential::computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   QVectorExtended partials(X.size(), 0.0);
+   return partials;
+}
+
 double SingleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
    QPair<double, double> parameters = computeParameters(X, Y);
