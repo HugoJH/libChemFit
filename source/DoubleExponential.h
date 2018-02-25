@@ -18,11 +18,11 @@ class DoubleExponential
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);
       static int findBestCombinationsofPreParametersIndex(const QVectorExtended& X,
-                                          const QVectorExtended& Y);
+                                                          const QVectorExtended& Y);
       static double computeFirstPreParameter(const QVectorExtended& X,
                                              const QVectorExtended& Y);
       static double computeSecondPreParameter(const QVectorExtended& X,
-                                             const QVectorExtended& Y);
+                                              const QVectorExtended& Y);
 };
 
 #endif // DOUBLEEXPONENTIAL_H
