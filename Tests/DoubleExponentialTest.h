@@ -13,7 +13,7 @@ class DoubleExponentialTest : public TestSuite
       void testComputeParameters();
       void testComputeDoubleExponential();
       void testComputeExperimentalAreaUnderCurve();
-
+      void testComputeTheoreticalAreaUnderCurve();
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H

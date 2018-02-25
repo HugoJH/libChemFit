@@ -98,6 +98,11 @@ double DoubleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
    return mathOps::sum(vEAUC);
 }
 
+double DoubleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;

@@ -75,4 +75,23 @@ void DoubleExponentialTest::testComputeExperimentalAreaUnderCurve()
    QVERIFY2(qFuzzyCompare(EAUC, mockEAUC), "EAUC calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeTheoreticalAreaUnderCurve()
+{
+   QVectorExtended X = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+   QVectorExtended Y = {2,
+                        1.2727168592074,
+                        0.954066036314595,
+                        0.790605289049582,
+                        0.688635684924374,
+                        0.613268606711719,
+                        0.551290388270693,
+                        0.497497185756964,
+                        0.449664426745124,
+                        0.406693069544686,
+                        0.367924841101205};
+   const double mockTAUC = 8.469526780929929;
+   double TAUC = DoubleExponential::computeTheoreticalAreaUnderCurve(X, Y);
+   QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "TAUC calculation failed!");
+}
+
 static DoubleExponentialTest DETest;
