@@ -70,7 +70,12 @@ QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, c
 
 QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, const QVectorExtended& parameters)
 {
-   return QVectorExtended({0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
+   QVectorExtended exponential;
+   foreach (const double& d, X)
+   {
+          exponential << (parameters[0] * exp(-parameters[2] * d)) + parameters[1] * exp(-parameters[3] * d);
+   }
+   return exponential;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
