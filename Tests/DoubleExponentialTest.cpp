@@ -89,7 +89,7 @@ void DoubleExponentialTest::testComputeTheoreticalAreaUnderCurve()
                         0.449664426745124,
                         0.406693069544686,
                         0.367924841101205};
-   const double mockTAUC = 8.469526780929929;
+   const double mockTAUC = 10.999999999999995;
    double TAUC = DoubleExponential::computeTheoreticalAreaUnderCurve(X, Y);
    QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "TAUC calculation failed!");
 }

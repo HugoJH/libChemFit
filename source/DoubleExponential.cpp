@@ -100,7 +100,8 @@ double DoubleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
 
 double DoubleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QVectorExtended parameters = computeParameters(X, Y);
+   return ((parameters[0] / parameters[1]) + (parameters[2] / parameters[3]));
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
