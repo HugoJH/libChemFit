@@ -11,6 +11,8 @@ class DoubleExponential
                                                const QVectorExtended& Y);
       static QVectorExtended computeExponential(const QVectorExtended& X,
                                                 const QVectorExtended& parameters);
+      static double computeExperimentalAreaUnderCurve(const QVectorExtended& X,
+                                                      const QVectorExtended& Y);
 
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,

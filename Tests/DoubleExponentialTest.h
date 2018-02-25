@@ -12,6 +12,7 @@ class DoubleExponentialTest : public TestSuite
    private slots:
       void testComputeParameters();
       void testComputeDoubleExponential();
+      void testComputeExperimentalAreaUnderCurve();
 
 };
 
