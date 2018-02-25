@@ -9,6 +9,9 @@ class DoubleExponential
       DoubleExponential();
       static QVectorExtended computeParameters(const QVectorExtended& X,
                                                const QVectorExtended& Y);
+      static QVectorExtended computeExponential(const QVectorExtended& X,
+                                                const QVectorExtended& parameters);
+
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);

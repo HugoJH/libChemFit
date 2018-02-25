@@ -68,6 +68,11 @@ QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, c
    return parameters;
 }
 
+QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, const QVectorExtended& parameters)
+{
+   return QVectorExtended({0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0});
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;
