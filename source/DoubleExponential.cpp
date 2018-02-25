@@ -16,7 +16,7 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
    QVectorExtended parameters;
    try
    {
-      int bestIndex = findBestIndex(X, Y);
+      int bestIndex = findBestCombinationsofPreParametersIndex(X, Y);
 
       QPair<double,double> Comp2ParametersDefinitive;
       Comp2ParametersDefinitive = SingleExponential::computeParameters(X.mid(X.size() - bestIndex),
@@ -68,7 +68,7 @@ QVectorExtended DoubleExponential::computeParameters(const QVectorExtended& X, c
    return parameters;
 }
 
-int DoubleExponential::findBestIndex(const QVectorExtended& X, const QVectorExtended& Y)
+int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;
    double goldStdRes = 888888888;
