@@ -104,6 +104,11 @@ double DoubleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended
    return ((parameters[0] / parameters[1]) + (parameters[2] / parameters[3]));
 }
 
+QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return QVectorExtended({0, 0, 0, 0, 0, 0});
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;

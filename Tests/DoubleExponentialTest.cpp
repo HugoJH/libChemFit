@@ -94,4 +94,28 @@ void DoubleExponentialTest::testComputeTheoreticalAreaUnderCurve()
    QVERIFY2(qFuzzyCompare(TAUC, mockTAUC), "TAUC calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeAreaUnderCurvePartials()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   QVectorExtended mockAUCPartials = {27916.06208529732,
+                                      11082.225,
+                                      13686.75,
+                                      7540.200000000001,
+                                      21639,
+                                      3699.6,
+                                      76831.9058466466};
+
+   QVectorExtended AUCPArtials = DoubleExponential::computeAreaUnderCurvePartials(X, Y);
+   for(int i = 0; i < AUCPArtials.size(); ++i)
+   {
+      QVERIFY2(qFuzzyCompare(mockAUCPartials[i], AUCPArtials[i]), "AUC partials calculation failed!");
+   }
+}
+
 static DoubleExponentialTest DETest;
