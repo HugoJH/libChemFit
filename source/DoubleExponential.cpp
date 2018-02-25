@@ -80,6 +80,17 @@ QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, 
 
 double DoubleExponential::computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
+   return mathOps::sum(computeAreaUnderCurvePartials(X, Y));
+}
+
+double DoubleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   QVectorExtended parameters = computeParameters(X, Y);
+   return ((parameters[0] / parameters[1]) + (parameters[2] / parameters[3]));
+}
+
+QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y)
+{
    QVectorExtended vEAUC;
    QVectorExtended parameters = computeParameters(X, Y);
 
@@ -95,18 +106,7 @@ double DoubleExponential::computeExperimentalAreaUnderCurve(const QVectorExtende
    }
 
    vEAUC << ((Y.last() / parameters.last()));
-   return mathOps::sum(vEAUC);
-}
-
-double DoubleExponential::computeTheoreticalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
-{
-   QVectorExtended parameters = computeParameters(X, Y);
-   return ((parameters[0] / parameters[1]) + (parameters[2] / parameters[3]));
-}
-
-QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorExtended& X, const QVectorExtended& Y)
-{
-   return QVectorExtended({0, 0, 0, 0, 0, 0});
+   return vEAUC;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
