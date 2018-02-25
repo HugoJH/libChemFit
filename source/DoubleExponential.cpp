@@ -80,7 +80,22 @@ QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, 
 
 double DoubleExponential::computeExperimentalAreaUnderCurve(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QVectorExtended vEAUC;
+   QVectorExtended parameters = computeParameters(X, Y);
+
+   double temp = ((parameters[0] + parameters[1]) + Y[0]) / 2;
+   temp = temp * X[0];
+   vEAUC << temp;
+
+   for (int i = 0; i < (X.size() - 1); ++i)
+   {
+       int a = X[i + 1] - X[i];
+
+       vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
+   }
+
+   vEAUC << ((Y.last() / parameters.last()));
+   return mathOps::sum(vEAUC);
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)

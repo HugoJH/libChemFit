@@ -70,7 +70,7 @@ void DoubleExponentialTest::testComputeExperimentalAreaUnderCurve()
                         0.449664426745124,
                         0.406693069544686,
                         0.367924841101205};
-   const double mockEAUC = 9.206594219667835;
+   const double mockEAUC = 11.087648378087785;
    double EAUC = DoubleExponential::computeExperimentalAreaUnderCurve(X, Y);
    QVERIFY2(qFuzzyCompare(EAUC, mockEAUC), "EAUC calculation failed!");
 }
