@@ -162,4 +162,19 @@ void DoubleExponentialTest::testComputeHalfLifeAlphaPhase()
    QVERIFY2(qFuzzyCompare(HLAP, mockHLAP), "Half Life Alpha Phase calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeHalfLifeBetaPhase()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockHLAP = 441.1413991832305;
+   double HLAP = DoubleExponential::computeHalfLifeAlphaPhase(X, Y);
+   QVERIFY2(qFuzzyCompare(HLAP, mockHLAP), "Half Life Beta Phase calculation failed!");
+}
+}
+
 static DoubleExponentialTest DETest;

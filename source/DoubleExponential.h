@@ -25,6 +25,8 @@ class DoubleExponential
                                                  double doseInMicrograms);
       static double computeHalfLifeAlphaPhase(const QVectorExtended& X,
                                               const QVectorExtended& Y);
+      static double computeHalfLifeBetaPhase(const QVectorExtended& X,
+                                             const QVectorExtended& Y);
 
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,

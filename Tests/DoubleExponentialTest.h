@@ -18,6 +18,7 @@ class DoubleExponentialTest : public TestSuite
       void testComputeExperimentalClearance();
       void testComputeTheoreticalClearance();
       void testComputeHalfLifeAlphaPhase();
+      void testComputeHalfLifeBetaPhase();
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H
