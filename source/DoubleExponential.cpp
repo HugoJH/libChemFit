@@ -121,7 +121,8 @@ double DoubleExponential::computeTheoreticalClearance(const QVectorExtended& X, 
 
 double DoubleExponential::computeHalfLifeAlphaPhase(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QVectorExtended parameters = computeParameters(X, Y);
+   return qLn(2) / parameters[1];
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)

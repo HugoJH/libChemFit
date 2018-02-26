@@ -157,7 +157,7 @@ void DoubleExponentialTest::testComputeHalfLifeAlphaPhase()
                         162.61,
                         125.91,
                         120.73};
-   const double mockHLAP = 19.784511279764796;
+   const double mockHLAP = 441.1413991832305;
    double HLAP = DoubleExponential::computeHalfLifeAlphaPhase(X, Y);
    QVERIFY2(qFuzzyCompare(HLAP, mockHLAP), "TCL calculation failed!");
 }
