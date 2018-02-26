@@ -23,6 +23,9 @@ class DoubleExponential
       static double computeTheoreticalClearance(const QVectorExtended& X,
                                                  const QVectorExtended& Y,
                                                  double doseInMicrograms);
+      static double computeHalfLifeAlphaPhase(const QVectorExtended& X,
+                                              const QVectorExtended& Y);
+
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);

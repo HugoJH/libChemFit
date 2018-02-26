@@ -148,4 +148,18 @@ void DoubleExponentialTest::testComputeTheoreticalClearance()
    QVERIFY2(qFuzzyCompare(TCL, mockTCL), "TCL calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeHalfLifeAlphaPhase()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockHLAP = 19.784511279764796;
+   double HLAP = DoubleExponential::computeHalfLifeAlphaPhase(X, Y);
+   QVERIFY2(qFuzzyCompare(HLAP, mockHLAP), "TCL calculation failed!");
+}
+
 static DoubleExponentialTest DETest;

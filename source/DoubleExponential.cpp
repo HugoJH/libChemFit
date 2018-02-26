@@ -119,6 +119,11 @@ double DoubleExponential::computeTheoreticalClearance(const QVectorExtended& X, 
    return doseInMicrograms / computeTheoreticalAreaUnderCurve(X, Y);
 }
 
+double DoubleExponential::computeHalfLifeAlphaPhase(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;

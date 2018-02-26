@@ -5,7 +5,7 @@
 
 class DoubleExponentialTest : public TestSuite
 {
-       Q_OBJECT
+      Q_OBJECT
    public:
       DoubleExponentialTest();
       using TestSuite::TestSuite;
@@ -17,6 +17,7 @@ class DoubleExponentialTest : public TestSuite
       void testComputeAreaUnderCurvePartials();
       void testComputeExperimentalClearance();
       void testComputeTheoreticalClearance();
+      void testComputeHalfLifeAlphaPhase();
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H
