@@ -1,5 +1,5 @@
-#ifndef SINGLEEXPONENTIAL_H
-#define SINGLEEXPONENTIAL_H
+#ifndef CHEMFIT_EXPORT_H
+#define CHEMFIT_EXPORT_H
 
 #include "ChemFit_global.h"
 
@@ -10,4 +10,4 @@ class CHEMFITSHARED_EXPORT ChemFit
       ChemFit();
 };
 
-#endif // SINGLEEXPONENTIAL_H
+#endif // CHEMFIT_EXPORT_H
