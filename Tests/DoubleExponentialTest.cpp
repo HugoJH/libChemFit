@@ -171,10 +171,10 @@ void DoubleExponentialTest::testComputeHalfLifeBetaPhase()
                         162.61,
                         125.91,
                         120.73};
-   const double mockHLAP = 441.1413991832305;
-   double HLAP = DoubleExponential::computeHalfLifeAlphaPhase(X, Y);
-   QVERIFY2(qFuzzyCompare(HLAP, mockHLAP), "Half Life Beta Phase calculation failed!");
+   const double mockHLBP = 441.11504112192716;
+   double HLBP = DoubleExponential::computeHalfLifeBetaPhase(X, Y);
+   QVERIFY2(qFuzzyCompare(HLBP, mockHLBP), "Half Life Beta Phase calculation failed!");
 }
-}
+
 
 static DoubleExponentialTest DETest;

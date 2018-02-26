@@ -127,7 +127,8 @@ double DoubleExponential::computeHalfLifeAlphaPhase(const QVectorExtended& X, co
 
 double DoubleExponential::computeHalfLifeBetaPhase(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QVectorExtended parameters = computeParameters(X, Y);
+   return qLn(2) / parameters[3];
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
