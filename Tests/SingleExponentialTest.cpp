@@ -23,14 +23,22 @@ void SingleExponentialTest::testComputeParameters()
 
 void SingleExponentialTest::testComputeSingleExponential()
 {
-   QVectorExtended X = {1, 2, 3, 4, 5};
-   QVectorExtended mockY = {2.0591468247998,
-                            3.011764686380091,
-                            4.405089727881871,
-                            6.443005191754693,
-                            9.423716306668418};
-   const double mockP1 = 1.4078409462923063;
-   const double mockP2 = -0.3802344472200062;
+   QVector<double> X = {125, 180, 255, 300, 450, 480};
+   QVector<double> Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   QVector<double> mockY = {210.7761853607157,
+                            193.4451581468218,
+                            172.0852946676328,
+                            160.4188125663006,
+                            126.9483583244129,
+                            121.1438711325513};
+   QPair<double, double> parameters = SingleExponential::computeParameters(X, Y);
+   const double mockP1 = parameters.first;
+   const double mockP2 = parameters.second;
    QVectorExtended EstY = SingleExponential::computeExponential(X, mockP1, mockP2);
    for (int t = 0; t < EstY.size(); ++t)
    {
