@@ -133,7 +133,11 @@ double DoubleExponential::computeHalfLifeBetaPhase(const QVectorExtended& X, con
 
 double DoubleExponential::computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QVectorExtended parameters = computeParameters(X, Y);
+   QVectorExtended EstimatedY = computeExponential(X, parameters);
+   QVectorExtended squaredDiff = mathOps::vPow(EstimatedY - Y, 2);
+   double stdDiff = mathOps::stdDev(squaredDiff);
+   return mathOps::sum(squaredDiff / stdDiff);
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
