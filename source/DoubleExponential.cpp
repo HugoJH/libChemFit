@@ -73,7 +73,7 @@ QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, 
    QVectorExtended exponential;
    foreach (const double& d, X)
    {
-      exponential << (parameters[0] * exp(-parameters[2] * d)) + parameters[1] * exp(-parameters[3] * d);
+      exponential << (parameters[0] * exp(-parameters[1] * d)) + parameters[2] * exp(-parameters[3] * d);
    }
    return exponential;
 }
