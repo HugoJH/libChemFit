@@ -142,7 +142,7 @@ void DoubleExponentialTest::testComputeTheoreticalClearance()
                         162.61,
                         125.91,
                         120.73};
-   const double mockTCL = 19.920472923700405;
+   const double mockTCL = 19.784511279764796;
    double mockDose = 3.235e6;
    double TCL = DoubleExponential::computeTheoreticalClearance(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(TCL, mockTCL), "TCL calculation failed!");
