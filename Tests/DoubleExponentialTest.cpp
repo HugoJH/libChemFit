@@ -176,5 +176,19 @@ void DoubleExponentialTest::testComputeHalfLifeBetaPhase()
    QVERIFY2(qFuzzyCompare(HLBP, mockHLBP), "Half Life Beta Phase calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeResidualsSum()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockResidualsSum = 3.9981614450915957;
+   double residualsSum = DoubleExponential::computeResidualsSum(X, Y);
+   QVERIFY2(qFuzzyCompare(residualsSum, mockResidualsSum), "Residuals sum calculation failed!");
+}
+
 
 static DoubleExponentialTest DETest;

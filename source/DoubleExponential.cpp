@@ -131,6 +131,11 @@ double DoubleExponential::computeHalfLifeBetaPhase(const QVectorExtended& X, con
    return qLn(2) / parameters[3];
 }
 
+double DoubleExponential::computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;
