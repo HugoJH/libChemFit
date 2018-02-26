@@ -118,6 +118,36 @@ void DoubleExponentialTest::testComputeAreaUnderCurvePartials()
    }
 }
 
+void DoubleExponentialTest::testComputeExperimentalVolumeOfDistribution()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockEVoD = 12628.81412042831;
+   double mockDose = 3.235e6;
+   double EVoD = DoubleExponential::computeExperimentalVolumeOfDistribution(X, Y, mockDose);
+   QVERIFY2(qFuzzyCompare(EVoD, mockEVoD), "EVoD calculation failed!");
+}
+
+void DoubleExponentialTest::testComputeTheoreticalVolumeOfDistribution()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockTVoD = 12628.81412042831;
+   double mockDose = 3.235e6;
+   double TVoD = DoubleExponential::computeTheoreticalVolumeOfDistribution(X, Y, mockDose);
+   QVERIFY2(qFuzzyCompare(TVoD, mockTVoD), "TVoD calculation failed!");
+}
+
 void DoubleExponentialTest::testComputeExperimentalClearance()
 {
    QVectorExtended X = {125, 180, 255, 300, 450, 480};
