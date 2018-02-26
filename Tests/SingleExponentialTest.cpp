@@ -119,7 +119,6 @@ void SingleExponentialTest::testComputeExperimentalVolumeOfDistribution()
 
 void SingleExponentialTest::testComputeTheoreticalVolumeOfDistribution()
 {
-
    QVectorExtended X = {125, 180, 255, 300, 450, 480};
    QVectorExtended Y = {210.52,
                         192.47,
