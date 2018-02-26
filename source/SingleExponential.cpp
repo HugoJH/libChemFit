@@ -147,5 +147,9 @@ double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVecto
 
 double SingleExponential::computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   QPair<double, double> parameters = computeParameters(X, Y);
+   QVectorExtended EstimatedY = computeExponential(X,parameters.first,parameters.second);
+   QVectorExtended squaredDiff = mathOps::vPow(EstimatedY - Y, 2);
+   double stdDiff = mathOps::stdDev(squaredDiff);
+   return mathOps::sum(squaredDiff / stdDiff);
 }

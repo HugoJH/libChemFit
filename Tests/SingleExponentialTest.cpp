@@ -187,7 +187,7 @@ void SingleExponentialTest::testComputeResidualsSum()
                         162.61,
                         125.91,
                         120.73};
-   const double mockResidualsSum = 2.6;
+   const double mockResidualsSum = 3.9981614450915957;
    double residualsSum = SingleExponential::computeResidualsSum(X, Y);
    QVERIFY2(qFuzzyCompare(residualsSum, mockResidualsSum), "Residuals sum calculation failed!");
 }
