@@ -20,6 +20,9 @@ class DoubleExponential
       static double computeExperimentalClearance(const QVectorExtended& X,
                                                           const QVectorExtended& Y,
                                                           double doseInMicrograms);
+      static double computeTheoreticalClearance(const QVectorExtended& X,
+                                                 const QVectorExtended& Y,
+                                                 double doseInMicrograms);
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);

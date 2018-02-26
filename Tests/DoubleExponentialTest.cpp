@@ -133,4 +133,19 @@ void DoubleExponentialTest::testComputeExperimentalClearance()
    QVERIFY2(qFuzzyCompare(ECL, mockECL), "ECL calculation failed!");
 }
 
+void DoubleExponentialTest::testComputeTheoreticalClearance()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockTCL = 19.920472923700405;
+   double mockDose = 3.235e6;
+   double TCL = DoubleExponential::computeTheoreticalClearance(X, Y, mockDose);
+   QVERIFY2(qFuzzyCompare(TCL, mockTCL), "TCL calculation failed!");
+}
+
 static DoubleExponentialTest DETest;
