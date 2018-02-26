@@ -144,3 +144,8 @@ double SingleExponential::computeHalfLife(const QVectorExtended& X, const QVecto
    return qLn(2) * (computeExperimentalVolumeOfDistribution(X, Y, doseInMicrograms) /
                     computeExperimentalClearance(X, Y, doseInMicrograms));
 }
+
+double SingleExponential::computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}

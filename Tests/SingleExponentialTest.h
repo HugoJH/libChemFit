@@ -20,6 +20,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeExperimentalClearance();
       void testComputeTheoreticalClearance();
       void testComputeHalfLife();
+      void testComputeResidualsSum();
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H

@@ -178,4 +178,18 @@ void SingleExponentialTest::testComputeHalfLife()
    QVERIFY2(qFuzzyCompare(HL, mockHL), "HL calculation failed!");
 }
 
+void SingleExponentialTest::testComputeResidualsSum()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockResidualsSum = 2.6;
+   double residualsSum = SingleExponential::computeResidualsSum(X, Y);
+   QVERIFY2(qFuzzyCompare(residualsSum, mockResidualsSum), "Residuals sum calculation failed!");
+}
+
 static SingleExponentialTest SETest;
