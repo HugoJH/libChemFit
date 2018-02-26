@@ -111,7 +111,7 @@ QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorEx
 
 double DoubleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
-   return 0.0;
+   return doseInMicrograms / computeExperimentalAreaUnderCurve(X, Y);
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)

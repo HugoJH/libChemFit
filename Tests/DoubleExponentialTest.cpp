@@ -127,7 +127,7 @@ void DoubleExponentialTest::testComputeExperimentalClearance()
                         162.61,
                         125.91,
                         120.73};
-   const double mockECL = 19.701127174647876;
+   const double mockECL = 19.920472923700405;
    double mockDose = 3.235e6;
    double ECL = DoubleExponential::computeExperimentalClearance(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(ECL, mockECL), "ECL calculation failed!");
