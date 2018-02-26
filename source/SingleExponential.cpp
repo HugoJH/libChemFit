@@ -100,8 +100,9 @@ QVectorExtended SingleExponential::computeAreaUnderCurvePartials(const QVectorEx
 {
    QPair<double, double> parameters = computeParameters(X, Y);
    double temp = (((parameters.first) + Y[0]) / 2.0);
-   QVector<double> AUCPartials;
    temp = temp * X[0];
+
+   QVector<double> AUCPartials;
    AUCPartials << temp;
 
    for (int i = 0; i < (X.size() - 1); ++i)
