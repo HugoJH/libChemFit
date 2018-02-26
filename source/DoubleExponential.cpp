@@ -73,7 +73,7 @@ QVectorExtended DoubleExponential::computeExponential(const QVectorExtended& X, 
    QVectorExtended exponential;
    foreach (const double& d, X)
    {
-          exponential << (parameters[0] * exp(-parameters[2] * d)) + parameters[1] * exp(-parameters[3] * d);
+      exponential << (parameters[0] * exp(-parameters[2] * d)) + parameters[1] * exp(-parameters[3] * d);
    }
    return exponential;
 }
@@ -100,13 +100,18 @@ QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorEx
 
    for (int i = 0; i < (X.size() - 1); ++i)
    {
-       int a = X[i + 1] - X[i];
+      int a = X[i + 1] - X[i];
 
-       vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
+      vEAUC << (a * Y[i]) - (a * ((Y[i] - Y[i + 1]) / 2));
    }
 
    vEAUC << ((Y.last() / parameters.last()));
    return vEAUC;
+}
+
+double DoubleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
+{
+   return 0.0;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)

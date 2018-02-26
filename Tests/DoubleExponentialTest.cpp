@@ -118,4 +118,19 @@ void DoubleExponentialTest::testComputeAreaUnderCurvePartials()
    }
 }
 
+void DoubleExponentialTest::testComputeExperimentalClearance()
+{
+   QVectorExtended X = {125, 180, 255, 300, 450, 480};
+   QVectorExtended Y = {210.52,
+                        192.47,
+                        172.51,
+                        162.61,
+                        125.91,
+                        120.73};
+   const double mockECL = 19.701127174647876;
+   double mockDose = 3.235e6;
+   double ECL = DoubleExponential::computeExperimentalClearance(X, Y, mockDose);
+   QVERIFY2(qFuzzyCompare(ECL, mockECL), "ECL calculation failed!");
+}
+
 static DoubleExponentialTest DETest;

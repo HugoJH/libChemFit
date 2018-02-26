@@ -17,7 +17,9 @@ class DoubleExponential
                                                      const QVectorExtended& Y);
       static QVectorExtended computeAreaUnderCurvePartials(const QVectorExtended& X,
                                                            const QVectorExtended& Y);
-
+      static double computeExperimentalClearance(const QVectorExtended& X,
+                                                          const QVectorExtended& Y,
+                                                          double doseInMicrograms);
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
                                                   const QVectorExtended& Y);
