@@ -127,7 +127,7 @@ void DoubleExponentialTest::testComputeExperimentalVolumeOfDistribution()
                         162.61,
                         125.91,
                         120.73};
-   const double mockEVoD = 12628.81412042831;
+   const double mockEVoD = 6338.828898133474;
    double mockDose = 3.235e6;
    double EVoD = DoubleExponential::computeExperimentalVolumeOfDistribution(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(EVoD, mockEVoD), "EVoD calculation failed!");
@@ -142,7 +142,7 @@ void DoubleExponentialTest::testComputeTheoreticalVolumeOfDistribution()
                         162.61,
                         125.91,
                         120.73};
-   const double mockTVoD = 12628.81412042831;
+   const double mockTVoD = 6295.564985629097;
    double mockDose = 3.235e6;
    double TVoD = DoubleExponential::computeTheoreticalVolumeOfDistribution(X, Y, mockDose);
    QVERIFY2(qFuzzyCompare(TVoD, mockTVoD), "TVoD calculation failed!");

@@ -109,14 +109,18 @@ QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorEx
    return vEAUC;
 }
 
-double DoubleExponential::computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
-{
-   return 0.0;
-}
-
 double DoubleExponential::computeExperimentalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
 {
-   return 0.0;
+   double EAUC = computeExperimentalAreaUnderCurve(X, Y);
+   QVectorExtended parameters = computeParameters(X, Y);
+   return doseInMicrograms / ((parameters[1]+parameters[3]) * EAUC);
+}
+
+double DoubleExponential::computeTheoreticalVolumeOfDistribution(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)
+{
+   double TAUC = computeTheoreticalAreaUnderCurve(X, Y);
+   QVectorExtended parameters = computeParameters(X, Y);
+   return doseInMicrograms / ((parameters[1] + parameters[3]) * TAUC);
 }
 
 double DoubleExponential::computeExperimentalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms)

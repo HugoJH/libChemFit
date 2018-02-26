@@ -17,15 +17,12 @@ class DoubleExponential
                                                      const QVectorExtended& Y);
       static QVectorExtended computeAreaUnderCurvePartials(const QVectorExtended& X,
                                                            const QVectorExtended& Y);
-      static double computeTheoreticalVolumeOfDistribution(const QVectorExtended& X,
-                                                           const QVectorExtended& Y,
-                                                           double doseInMicrograms);
       static double computeExperimentalVolumeOfDistribution(const QVectorExtended& X,
                                                             const QVectorExtended& Y,
                                                             double doseInMicrograms);
-
-
-
+      static double computeTheoreticalVolumeOfDistribution(const QVectorExtended& X,
+                                                           const QVectorExtended& Y,
+                                                           double doseInMicrograms);
       static double computeExperimentalClearance(const QVectorExtended& X,
                                                           const QVectorExtended& Y,
                                                           double doseInMicrograms);
