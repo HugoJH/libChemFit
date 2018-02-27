@@ -94,7 +94,7 @@ QVectorExtended DoubleExponential::computeAreaUnderCurvePartials(const QVectorEx
    QVectorExtended vEAUC;
    QVectorExtended parameters = computeParameters(X, Y);
 
-   double temp = ((parameters[0] + parameters[1]) + Y[0]) / 2;
+   double temp = (parameters[0] + parameters[2] + Y[0]) / 2;
    temp = temp * X[0];
    vEAUC << temp;
 
