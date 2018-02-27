@@ -15,6 +15,8 @@ class QVectorExtended : public QVector<double>
 
       QVectorExtended operator-(const QVectorExtended & X) const;
 
+      QVectorExtended operator-(double d) const;
+
       QVectorExtended operator+( double n) const;
 
       QVectorExtended operator*(const QVectorExtended & X) const;
