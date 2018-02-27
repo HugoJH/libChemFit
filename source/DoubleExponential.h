@@ -24,11 +24,11 @@ class DoubleExponential
                                                            const QVectorExtended& Y,
                                                            double doseInMicrograms);
       static double computeExperimentalClearance(const QVectorExtended& X,
-                                                          const QVectorExtended& Y,
-                                                          double doseInMicrograms);
-      static double computeTheoreticalClearance(const QVectorExtended& X,
                                                  const QVectorExtended& Y,
                                                  double doseInMicrograms);
+      static double computeTheoreticalClearance(const QVectorExtended& X,
+                                                const QVectorExtended& Y,
+                                                double doseInMicrograms);
       static double computeHalfLifeAlphaPhase(const QVectorExtended& X,
                                               const QVectorExtended& Y);
       static double computeHalfLifeBetaPhase(const QVectorExtended& X,
@@ -45,6 +45,8 @@ class DoubleExponential
                                              const QVectorExtended& Y);
       static double computeSecondPreParameter(const QVectorExtended& X,
                                               const QVectorExtended& Y);
+
+      static QVectorExtended compoundExponentialFromTwoSingleExponentials(const QVectorExtended& X, const QVectorExtended& Y, int index);
 };
 
 #endif // DOUBLEEXPONENTIAL_H

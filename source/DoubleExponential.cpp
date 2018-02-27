@@ -147,11 +147,10 @@ double DoubleExponential::computeHalfLifeBetaPhase(const QVectorExtended& X, con
 
 double DoubleExponential::computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   QVectorExtended parameters = computeParameters(X, Y);
-   QVectorExtended EstimatedY = computeExponential(X, parameters);
-   QVectorExtended squaredDiff = mathOps::vPow(EstimatedY - Y, 2);
-   double stdDiff = mathOps::stdDev(squaredDiff);
-   return mathOps::sum(squaredDiff / stdDiff);
+   int index = findBestCombinationsofPreParametersIndex(X,Y);
+   QVectorExtended compoundExponential = compoundExponentialFromTwoSingleExponentials(X, Y, index);
+   double stdRes = mathOps::stdResidualsSum(compoundExponential, Y);
+   return stdRes;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
@@ -161,48 +160,19 @@ int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExt
 
    for (int z = 2; z < X.size(); ++z)
    {
-      /*----------Segunda---exponencial-----------------*/
-      QPair<double,double> parametersSEComp2;
-      parametersSEComp2 = SingleExponential::computeParameters(X.mid(X.size() - z),
-                                                               Y.mid(Y.size() - z));
-      if ((std::isnan(parametersSEComp2.first) ||
-           std::isnan(parametersSEComp2.second)))
+      QVectorExtended compoundExponential = compoundExponentialFromTwoSingleExponentials(X, Y, z);
+      if (compoundExponential.isEmpty())
       {
          continue;
       }
-
-      QVectorExtended exponentialComp2;
-      exponentialComp2 = SingleExponential::computeExponential(
-                            X,
-                            parametersSEComp2.first,
-                            parametersSEComp2.second);
-
-      QVectorExtended lny2 = mathOps::vAbs(Y - exponentialComp2);
-
-      /*----------Primera---exponencial-----------------*/
-      QPair<double, double> parametersSEComp1;
-      parametersSEComp1 = SingleExponential::computeParameters(X.mid(0, X.size() - z),
-                                                               lny2.mid(0, lny2.size() - z));
-
-      if ((std::isnan(parametersSEComp1.first) ||
-           std::isnan(parametersSEComp1.second)))
-      {
-         continue;
-      }
-
-      QVectorExtended exponentialComp1 = SingleExponential::computeExponential(
-                                            X,
-                                            parametersSEComp1.first,
-                                            parametersSEComp1.second);
-
-      double stdRes = mathOps::stdResidualsSum(exponentialComp2 +
-                                               exponentialComp1, Y);
+      double stdRes = mathOps::stdResidualsSum(compoundExponential, Y);
       if (stdRes < goldStdRes)
       {
          goldIndex = z;
          goldStdRes = stdRes;
       }
    }
+
    return goldIndex;
 }
 
@@ -240,4 +210,41 @@ double DoubleExponential::computeSecondPreParameter(const QVectorExtended& X, co
            qPow(mathOps::sum(X * Y), 2);
 
    return num / denom;
+}
+
+QVectorExtended DoubleExponential::compoundExponentialFromTwoSingleExponentials(const QVectorExtended& X, const QVectorExtended& Y, int index)
+{
+   /*----------Segunda---exponencial-----------------*/
+   QPair<double,double> parametersSEComp2;
+   parametersSEComp2 = SingleExponential::computeParameters(X.mid(X.size() - index),
+                                                            Y.mid(Y.size() - index));
+   if ((std::isnan(parametersSEComp2.first) ||
+        std::isnan(parametersSEComp2.second)))
+   {
+      return QVectorExtended();
+   }
+
+   QVectorExtended exponentialComp2;
+   exponentialComp2 = SingleExponential::computeExponential(X,
+                                                            parametersSEComp2.first,
+                                                            parametersSEComp2.second);
+
+   QVectorExtended lny2 = mathOps::vAbs(Y - exponentialComp2);
+
+   /*----------Primera---exponencial-----------------*/
+   QPair<double, double> parametersSEComp1;
+   parametersSEComp1 = SingleExponential::computeParameters(X.mid(0, X.size() - index),
+                                                            lny2.mid(0, lny2.size() - index));
+
+   if ((std::isnan(parametersSEComp1.first) ||
+        std::isnan(parametersSEComp1.second)))
+   {
+      return QVectorExtended();
+   }
+
+   QVectorExtended exponentialComp1;
+   exponentialComp1 = SingleExponential::computeExponential(X,
+                                                            parametersSEComp1.first,
+                                                            parametersSEComp1.second);
+   return (exponentialComp1 + exponentialComp2);
 }
