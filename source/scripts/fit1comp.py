@@ -7,5 +7,5 @@ def LMPARAMS(x,y, A0, B0):
     def func(x_, a, b):
        return a*np.exp(-b*x_)
 
-    popt, pcov = curve_fit(func, x, y, p0=(A0,B0), sigma=y)
+    popt, pcov = curve_fit(func, x, y, p0=(A0,B0))
     return popt.tolist()
