@@ -33,10 +33,10 @@ QVectorExtended DoubleExponential::computePreParameters(const QVectorExtended& X
       Comp1ParametersDefinitive = SingleExponential::computeParameters(X.mid(0, X.size() - bestIndex),
                                                                        lny2.mid(0, lny2.size() - bestIndex));
 
-      parameters.push_back(Comp2ParametersDefinitive.first);
-      parameters.push_back(Comp2ParametersDefinitive.second);
       parameters.push_back(Comp1ParametersDefinitive.first);
       parameters.push_back(Comp1ParametersDefinitive.second);
+      parameters.push_back(Comp2ParametersDefinitive.first);
+      parameters.push_back(Comp2ParametersDefinitive.second);
    }
    catch(int e)
    {
