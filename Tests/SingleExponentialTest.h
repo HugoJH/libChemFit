@@ -21,6 +21,7 @@ class SingleExponentialTest : public TestSuite
       void testComputeTheoreticalClearance();
       void testComputeHalfLife();
       void testComputeResidualsSum();
+      void testComputeMRT();
 };
 
 #endif // TST_SINGLEEXPONENTIALTEST_H

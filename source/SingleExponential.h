@@ -20,6 +20,7 @@ class SingleExponential
       static double computeTheoreticalClearance(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms);
       static double computeHalfLife(const QVectorExtended& X, const QVectorExtended& Y, double doseInMicrograms);
       static double computeResidualsSum(const QVectorExtended& X, const QVectorExtended& Y);
+      static double computeMRT(const QVectorExtended& X, const QVectorExtended& Y);
    private:
       static double computeFirstPreParameter(const QVectorExtended & X, const QVectorExtended & Y);
       static double computeSecondPreParameter(const QVectorExtended & X, const QVectorExtended & Y);

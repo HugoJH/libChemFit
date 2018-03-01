@@ -154,3 +154,8 @@ double SingleExponential::computeResidualsSum(const QVectorExtended& X, const QV
    double stdDiff = mathOps::stdDev(squaredDiff);
    return mathOps::sum(squaredDiff / stdDiff);
 }
+
+double SingleExponential::computeMRT(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
