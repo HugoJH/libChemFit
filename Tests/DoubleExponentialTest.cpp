@@ -154,7 +154,7 @@ void DoubleExponentialTest::testComputeMRT()
 {
    QVectorExtended X = {17, 33, 47, 60, 93, 120, 181, 240, 298, 420};
    QVectorExtended Y = {140.82, 110.01, 89.35, 76.89, 67.53, 51.57, 38.8, 28.88, 21.9, 12.7};
-   const double mockMRT = 3.913766636134053;
+   const double mockMRT = 217.32328798142538;
    double MRT = DoubleExponential::computeMRT(X, Y);
    QVERIFY2(qFuzzyCompare(MRT, mockMRT), "MRT calculation failed!");
 }

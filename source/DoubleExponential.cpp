@@ -155,7 +155,10 @@ double DoubleExponential::computeResidualsSum(const QVectorExtended& X, const QV
 
 double DoubleExponential::computeMRT(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   double EAUMC = DoubleExponential::computeExperimentalAreaUnderCurve(X, X * Y);
+   double EAUC = DoubleExponential::computeExperimentalAreaUnderCurve(X, Y);
+
+   return EAUMC/EAUC;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
