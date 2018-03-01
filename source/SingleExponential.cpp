@@ -157,5 +157,7 @@ double SingleExponential::computeResidualsSum(const QVectorExtended& X, const QV
 
 double SingleExponential::computeMRT(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   double EAUC = computeExperimentalAreaUnderCurve(X, Y);
+   QPair<double, double> parameters = computeParameters(X, Y);
+   return EAUC / parameters.first;
 }
