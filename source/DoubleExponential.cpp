@@ -153,6 +153,11 @@ double DoubleExponential::computeResidualsSum(const QVectorExtended& X, const QV
    return stdRes;
 }
 
+double DoubleExponential::computeMRT(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
+
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
 {
    int goldIndex = 2;

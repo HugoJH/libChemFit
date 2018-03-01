@@ -22,6 +22,7 @@ class DoubleExponentialTest : public TestSuite
       void testComputeHalfLifeAlphaPhase();
       void testComputeHalfLifeBetaPhase();
       void testComputeResidualsSum();
+      void testComputeMRT();
 };
 
 #endif // DOUBLEEXPONENTIALTEST_H
