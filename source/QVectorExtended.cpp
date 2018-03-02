@@ -70,6 +70,17 @@ QVectorExtended QVectorExtended::operator*(const QVectorExtended& X) const
    return result;
 }
 
+QVectorExtended QVectorExtended::operator*(double d) const
+{
+   QVectorExtended result;
+
+   for (int i = 0; i < this->count(); ++i)
+   {
+      result << (*this)[i] * d;
+   }
+   return result;
+}
+
 
 QVectorExtended QVectorExtended::operator/(double n) const
 {
