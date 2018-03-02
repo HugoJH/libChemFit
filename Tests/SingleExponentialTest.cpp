@@ -146,4 +146,13 @@ void SingleExponentialTest::testComputeMRT()
    QVERIFY2(qFuzzyCompare(MRT, mockMRT), "MRT calculation failed!");
 }
 
+void SingleExponentialTest::testComputeVRT()
+{
+   QVector<double> X = {125, 180, 255, 300, 450, 480};
+   QVector<double> Y = {210.52, 192.47, 172.51, 162.61, 125.91, 120.73};
+   const double mockVRT = 637.1578576517996;
+   double VRT = SingleExponential::computeVRT(X, Y);
+   QVERIFY2(qFuzzyCompare(VRT, mockVRT), "VRT calculation failed!");
+}
+
 static SingleExponentialTest SETest;

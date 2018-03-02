@@ -161,3 +161,8 @@ double SingleExponential::computeMRT(const QVectorExtended& X, const QVectorExte
    QPair<double, double> parameters = computeParameters(X, Y);
    return EAUC / parameters.first;
 }
+
+double SingleExponential::computeVRT(const QVectorExtended& X, const QVectorExtended& Y)
+{
+   return 0.0;
+}
