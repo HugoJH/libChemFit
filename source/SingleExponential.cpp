@@ -164,5 +164,9 @@ double SingleExponential::computeMRT(const QVectorExtended& X, const QVectorExte
 
 double SingleExponential::computeVRT(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   double MRT = computeMRT(X, Y);
+   double VRT_numerator = SingleExponential::computeTheoreticalAreaUnderCurve(X, Y * mathOps::vPow(X - MRT, 2));
+   double VRT_denominator = SingleExponential::computeTheoreticalAreaUnderCurve(X, Y);
+
+   return VRT_numerator / VRT_denominator;
 }
