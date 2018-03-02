@@ -163,7 +163,11 @@ double DoubleExponential::computeMRT(const QVectorExtended& X, const QVectorExte
 
 double DoubleExponential::computeVRT(const QVectorExtended& X, const QVectorExtended& Y)
 {
-   return 0.0;
+   double MRT = computeMRT(X, Y);
+   double VRT_numerator = DoubleExponential::computeTheoreticalAreaUnderCurve(X, Y * mathOps::vPow(X - MRT, 2));
+   double VRT_denominator = DoubleExponential::computeTheoreticalAreaUnderCurve(X, Y);
+
+   return VRT_numerator / VRT_denominator;
 }
 
 int DoubleExponential::findBestCombinationsofPreParametersIndex(const QVectorExtended& X, const QVectorExtended& Y)
