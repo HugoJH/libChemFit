@@ -37,6 +37,8 @@ class DoubleExponential
                                         const QVectorExtended& Y);
       static double computeMRT(const QVectorExtended& X,
                                const QVectorExtended& Y);
+      static double computeVRT(const QVectorExtended& X,
+                               const QVectorExtended& Y);
 
    private:
       static QVectorExtended computePreParameters(const QVectorExtended& X,
