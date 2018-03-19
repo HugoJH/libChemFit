@@ -47,3 +47,11 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+
+copydata.commands = $(COPY_FILE) "$$PWD/scripts/*.py" "$$OUT_PWD/../Tests"
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata
+
